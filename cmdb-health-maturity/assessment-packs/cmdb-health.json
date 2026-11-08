@@ -1,0 +1,389 @@
+{
+  "product": "CMDB Health and Maturity Assessment",
+  "byline": "Developed by Enamul Haque",
+  "module": "Independent ServiceNow CMDB self assessment",
+  "version": "1.0.0-preview",
+  "scoringVersion": "cmdb-maturity-1.0",
+  "scope": "CMDB data health, CSDM service modelling, relationship quality and governance",
+  "domains": [
+    {
+      "id": "D1",
+      "name": "Data health and integrity",
+      "weight": 25
+    },
+    {
+      "id": "D2",
+      "name": "CSDM and service modelling",
+      "weight": 25
+    },
+    {
+      "id": "D3",
+      "name": "Relationship and dependency quality",
+      "weight": 25
+    },
+    {
+      "id": "D4",
+      "name": "Governance and continuous improvement",
+      "weight": 25
+    }
+  ],
+  "criteria": [
+    {
+      "id": "C01",
+      "domain": "D1",
+      "question": "What proportion of in-scope CIs have every required identity attribute populated?",
+      "measure": "CIs passing required-field rules ÷ eligible in-scope CIs, by class",
+      "evidence": "CMDB Health Completeness, configured required fields and inclusion rules",
+      "sourceCodes": [
+        "SN-H",
+        "SN-M"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Repair missing required attributes; correct class rules and feeds.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C02",
+      "domain": "D1",
+      "question": "What proportion of in-scope CIs have the recommended operational attributes populated?",
+      "measure": "CIs passing recommended-field rules ÷ eligible in-scope CIs, by class",
+      "evidence": "CMDB Health recommended-fields metric; class-scoped sampled records",
+      "sourceCodes": [
+        "SN-H",
+        "SN-M"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Define fit-for-purpose field rules and fill high-value gaps.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C03",
+      "domain": "D1",
+      "question": "What is the duplicate CI rate for independently identified CI classes in scope?",
+      "measure": "Duplicate independent CIs ÷ eligible independent CIs",
+      "evidence": "CMDB Health Correctness duplicate metric, identification rules",
+      "sourceCodes": [
+        "SN-M",
+        "SN-I"
+      ],
+      "critical": false,
+      "metricType": "lower",
+      "remediation": "Investigate identification rules, data-source overlaps and duplicate-remediation tasks.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C04",
+      "domain": "D1",
+      "question": "What is the stale CI rate under appropriate, class-specific freshness rules?",
+      "measure": "Stale in-scope CIs ÷ eligible in-scope CIs, with rule and period stated",
+      "evidence": "CMDB Health staleness scorecards, class-specific rules",
+      "sourceCodes": [
+        "SN-M",
+        "SN-F"
+      ],
+      "critical": false,
+      "metricType": "lower",
+      "remediation": "Review collection schedules, staleness policies and retirement.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C05",
+      "domain": "D1",
+      "question": "What is the orphan CI rate under the approved class-specific orphan rules?",
+      "measure": "Orphan CIs ÷ eligible CIs, by class and rule",
+      "evidence": "CMDB Health orphan metric; actual configured orphan rules",
+      "sourceCodes": [
+        "SN-M"
+      ],
+      "critical": false,
+      "metricType": "lower",
+      "remediation": "Correct missing dependencies or attributes; retire obsolete records.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C06",
+      "domain": "D1",
+      "question": "Do relevant CIs pass configured CMDB compliance audits against defined organisational requirements?",
+      "measure": "CIs passing relevant current audits ÷ CIs evaluated, disclose audit coverage",
+      "evidence": "CMDB Health compliance audits; audit run date and rule scope",
+      "sourceCodes": [
+        "SN-H",
+        "SN-M"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Enable/fix applicable audits and address repeated failures.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C07",
+      "domain": "D2",
+      "question": "Are in-scope business applications, application services and technical CIs classified in the correct CSDM roles/classes?",
+      "measure": "Expert-reviewed correctly classified records ÷ sample reviewed",
+      "evidence": "CSDM Data Foundations stage reports and sampled class review",
+      "sourceCodes": [
+        "SN-C"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Reclassify wrongly modelled records and update modelling standards.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C08",
+      "domain": "D2",
+      "question": "Are critical application services represented and linked to their technical components?",
+      "measure": "Critical application services with validated technical support map ÷ in-scope critical application services",
+      "evidence": "CSDM dashboards and service-map review",
+      "sourceCodes": [
+        "SN-C"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Populate missing application services and supporting-CI relationships.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C09",
+      "domain": "D2",
+      "question": "Are business services or offerings related to the correct application services where the use case requires those links?",
+      "measure": "Required service-to-application links confirmed ÷ expected links in sampled critical services",
+      "evidence": "CSDM Run-stage indicators and owner-verified service mappings",
+      "sourceCodes": [
+        "SN-C"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Link the service model to the application service layer.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C10",
+      "domain": "D2",
+      "question": "Can selected business critical services be traced to the relevant technical dependencies?",
+      "measure": "Representative critical service topology paths can be traced to supporting technical CI records",
+      "evidence": "CMDB relationship views, service maps or sampled topology traversal results",
+      "sourceCodes": [
+        "SN-C"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Resolve missing service model nodes and wrong dependency edges.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C11",
+      "domain": "D2",
+      "question": "Are the CSDM Data Foundations findings relevant to the chosen use case reviewed and assigned remediation owners?",
+      "measure": "Applicable high-priority findings with accepted dispositions ÷ relevant high-priority findings",
+      "evidence": "CSDM Data Foundations report, improvement backlog and ownership",
+      "sourceCodes": [
+        "SN-C"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Triage model gaps, designate owners and evidence closure.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C12",
+      "domain": "D3",
+      "question": "What proportion of expected dependencies for selected important services is represented in the CMDB?",
+      "measure": "Verified expected dependencies recorded ÷ total expected dependencies in sampled services",
+      "evidence": "Service topology sample and independently reviewed dependency inventory",
+      "sourceCodes": [
+        "SN-C"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Map missing dependencies, focusing on critical service paths.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C13",
+      "domain": "D3",
+      "question": "Are relationship types and directions correct for the selected service dependency paths?",
+      "measure": "Correctly directed and typed sampled dependencies ÷ sampled dependencies",
+      "evidence": "Relationship type rules and representative dependency traversal evidence",
+      "sourceCodes": [
+        "SN-M"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Correct parent/child direction and relationship semantics; rerun traversal.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C14",
+      "domain": "D3",
+      "question": "What percentage of in-scope CI relationships are duplicates?",
+      "measure": "Duplicate relationships ÷ relationships in assessment scope",
+      "evidence": "CMDB Relationship Health duplicate metric",
+      "sourceCodes": [
+        "SN-H",
+        "SN-M"
+      ],
+      "critical": false,
+      "metricType": "lower",
+      "remediation": "Deduplicate invalid relationships; fix ingest rules.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C15",
+      "domain": "D3",
+      "question": "What percentage of in-scope relationships are orphaned?",
+      "measure": "Orphan relationships ÷ relationships in scope",
+      "evidence": "CMDB Relationship Health orphan metric",
+      "sourceCodes": [
+        "SN-H",
+        "SN-M"
+      ],
+      "critical": false,
+      "metricType": "lower",
+      "remediation": "Repair broken endpoints or clean up invalid links.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C16",
+      "domain": "D3",
+      "question": "What percentage of in-scope relationships are stale because a connected CI is stale?",
+      "measure": "Stale relationships ÷ relationships in scope",
+      "evidence": "CMDB Relationship Health stale metric",
+      "sourceCodes": [
+        "SN-M"
+      ],
+      "critical": false,
+      "metricType": "lower",
+      "remediation": "Repair the source CI freshness issue and recheck its links.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C17",
+      "domain": "D3",
+      "question": "Do relevant relationships comply with configured suggested, hosting and containment rules?",
+      "measure": "Compliant applicable links ÷ links tested; identify exclusions",
+      "evidence": "CMDB Relationship Health rule conformance summaries",
+      "sourceCodes": [
+        "SN-H",
+        "SN-M"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Correct invalid relationship types and class modelling.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C18",
+      "domain": "D3",
+      "question": "Do representative service topology traversals return the expected upstream and downstream paths?",
+      "measure": "Expected traversal paths correctly represented ÷ reference traversal scenarios tested",
+      "evidence": "Tested topology diagrams for important services, including expected and actual paths",
+      "sourceCodes": [
+        "SN-C"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Repair missing/wrong service paths and retest affected scenarios.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C19",
+      "domain": "D4",
+      "question": "What proportion of in-scope CIs and services has an active, accountable operational owner?",
+      "measure": "Records with valid active accountable owner ÷ eligible CI/service records",
+      "evidence": "CMDB ownership attributes, team references, sampled attestation",
+      "sourceCodes": [
+        "SN-F",
+        "SN-C"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Assign accountable owners and remove inactive/stale references.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C20",
+      "domain": "D4",
+      "question": "Are authoritative data sources and attribute-level reconciliation responsibilities defined for critical CI classes?",
+      "measure": "Relevant classes/attributes with defined source authority ÷ relevant set",
+      "evidence": "IRE reconciliation and source-rule review; source catalogue",
+      "sourceCodes": [
+        "SN-I",
+        "SN-F"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Define data authority and reconcile conflicting updates.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C21",
+      "domain": "D4",
+      "question": "Do CI identification rules uniquely identify records entering the in-scope CMDB classes?",
+      "measure": "Positive and collision tests passed ÷ defined IRE test cases",
+      "evidence": "Identification rule configuration and duplicate simulation results",
+      "sourceCodes": [
+        "SN-I"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Adjust identification precedence and validate multiple-source cases.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C22",
+      "domain": "D4",
+      "question": "Are critical CI/service records periodically certified or reviewed by accountable owners?",
+      "measure": "Due reviews completed and valid ÷ due reviews in defined period",
+      "evidence": "Certification/audit tasks, attestation dates, sampled reviews",
+      "sourceCodes": [
+        "SN-H",
+        "SN-C"
+      ],
+      "critical": false,
+      "metricType": "higher",
+      "remediation": "Introduce risk-based attestation and review cadence.",
+      "weightWithinDomain": 1
+    },
+    {
+      "id": "C23",
+      "domain": "D4",
+      "question": "Are CMDB Health jobs, remediation activities and periodic trend reviews operating for the relevant classes and rules?",
+      "measure": "Controls operating and evidenced, 0–4 maturity anchors",
+      "evidence": "Enabled health jobs, health-history reports, remediation backlog and closure verification",
+      "sourceCodes": [
+        "SN-H",
+        "SN-F"
+      ],
+      "critical": false,
+      "metricType": "maturity",
+      "remediation": "Activate the appropriate jobs; assign health findings and monitor recurring errors.",
+      "weightWithinDomain": 1
+    }
+  ],
+  "sources": {
+    "SN-H": {
+      "name": "ServiceNow CMDB Health overview",
+      "url": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/overview-cmdb-health.html"
+    },
+    "SN-M": {
+      "name": "ServiceNow CMDB Health KPIs and metrics",
+      "url": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/r_CMDBHealthMetrics.html"
+    },
+    "SN-F": {
+      "name": "ServiceNow CMDB Data Foundations",
+      "url": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/cmdb-sa-df-dashboard.html"
+    },
+    "SN-C": {
+      "name": "ServiceNow CSDM Data Foundations dashboard",
+      "url": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-data-foundations-dashboard-csdm.html"
+    },
+    "SN-I": {
+      "name": "ServiceNow Identification and Reconciliation Engine",
+      "url": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/c_CMDBIdentifyandReconcile.html"
+    }
+  },
+  "sourceNote": "Independent, source informed assessment. The score, criteria, maturity bands and weights are authored for this research preview. They are not a ServiceNow CMDB Health Dashboard result or official maturity certification."
+}
