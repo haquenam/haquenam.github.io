@@ -1,6 +1,6 @@
 {
   "name": "ServiceNow AI Readiness Assessment Suite",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "published": "2026-11-10",
   "author": "Enamul Haque",
   "disclaimer": "Independent research preview. Foundation suitability is not ServiceNow certification or authorisation to deploy AI. Results are based on user supplied answers, applicability and evidence claims. Verify release, licence, configuration, security and real outcomes separately.",
