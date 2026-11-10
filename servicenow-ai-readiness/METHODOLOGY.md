@@ -1,12 +1,20 @@
 # ServiceNow AI Readiness Assessment Suite
 
-## Research methodology, version 0.4
+## Research methodology, version 0.5
 
 Published working draft: 10 November 2026. Author: Enamul Haque. Independent research preview.
 
 ## Purpose
 
 The assessment considers whether selected CMDB, Knowledge Management and Service Catalogue foundations are suitable for specific ServiceNow AI activities. A result does not certify a ServiceNow instance, an AI agent, or autonomous deployment.
+
+## User journey and question explanations
+
+The visitor enters through the Introduction screen in `index.html`. The future authoritative WordPress project page will provide the public research context and link to the assessment application. The browser application then presents Assessment Setup, the relevant foundation questions and the results.
+
+Each question presents a question mark beside the wording. Hover with a mouse, focus with a keyboard or tap on a touch device to read why the criterion is relevant, what the response establishes for the selected capability, suggested evidence and supporting research links. These explanations are versioned alongside the criteria in `criteria.json`.
+
+The introductory page is a feature of the application, not an additional WordPress page. WordPress publication remains a later checkpoint after the research model is approved.
 
 ## Capability selection
 
@@ -85,6 +93,8 @@ Can the selected AI workflow identify the correct configuration item without con
 
 AI rationale: Incorrect configuration identity can lead to an unsuitable service classification or impact result.
 
+What this tells us: Whether the intended AI activity can reliably recognise the correct configuration item, rather than use a duplicate or outdated record as operational context.
+
 Suggested evidence: Sample configuration item matches, identification checks and duplicate review.
 
 Suggested improvement: Check identification rules and correct ambiguous or duplicated records.
@@ -96,6 +106,8 @@ Sources: R3, R12.
 Are the configuration items relevant to this workflow linked to the correct services and service offerings?
 
 AI rationale: AI categorisation and service context depend on usable service associations.
+
+What this tells us: Whether service and service offering context associated with the relevant configuration items can be trusted for routing, classification or investigation.
 
 Suggested evidence: Sample incident mappings and relevant CSDM relationships.
 
@@ -109,6 +121,8 @@ For AI impact analysis, do the relevant configuration items have valid and corre
 
 AI rationale: Topology based impact analysis needs trustworthy dependency direction and coverage.
 
+What this tells us: Whether the dependency paths needed by AI assisted impact analysis are available and reflect known service effects.
+
 Suggested evidence: Dependency paths compared with known service impacts.
 
 Suggested improvement: Remediate the relationships used by your intended impact scenarios.
@@ -120,6 +134,8 @@ Sources: R5, R6.
 Are the configuration attributes and relationships consumed by AI sufficiently accurate, current and traceable to maintained sources?
 
 AI rationale: Stale or conflicting source data weakens AI context and conclusions.
+
+What this tells us: Whether the configuration facts supplied to AI are current enough, accurate enough and traceable to maintained sources.
 
 Suggested evidence: Source timestamps, reconciliation review and selected record checks.
 
@@ -133,6 +149,8 @@ Is someone accountable for correcting configuration or service relationship defe
 
 AI rationale: The reliability of AI context depends on a repeatable way of fixing defects.
 
+What this tells us: Whether discovered configuration defects can be corrected through accountable ownership before they recur in AI outputs.
+
 Suggested evidence: Named owner, improvement records and examples of resolved defects.
 
 Suggested improvement: Assign a data owner and introduce a tracked defect correction process.
@@ -144,6 +162,8 @@ Sources: R12, R13.
 Can the intended AI identity access the required configuration information while restricted records remain protected?
 
 AI rationale: A workflow needs authorised access to relevant context without inappropriate disclosure.
+
+What this tells us: Whether AI can obtain the required configuration context while protected records remain unavailable to unauthorised identities.
 
 Suggested evidence: Positive and negative access tests using the intended identities.
 
@@ -157,6 +177,8 @@ Do approved articles cover the actual questions and incident categories selected
 
 AI rationale: Content outside the selected demand patterns does not support useful answers or resolutions.
 
+What this tells us: Whether approved knowledge covers the real questions and incident categories within the chosen AI scope. Missing coverage becomes a priority for knowledge preparation.
+
 Suggested evidence: Top incident categories and queries mapped to relevant published articles.
 
 Suggested improvement: Prioritise coverage of the common scoped incidents and questions.
@@ -168,6 +190,8 @@ Sources: R1, P1.
 For selected incident types, are the instructions complete, ordered and usable by the intended audience?
 
 AI rationale: Autonomous investigation requires repeatable procedures, not merely topic descriptions.
+
+What this tells us: Whether the selected incident procedures contain enough ordered detail for an AI assistant or specialist to follow safely and consistently.
 
 Suggested evidence: Subject matter review and walkthrough of sample diagnosis and resolution steps.
 
@@ -181,6 +205,8 @@ Are operational decisions, exceptions, unsafe conditions and escalation triggers
 
 AI rationale: The tacit tax arises when the knowledge AI needs remains informal and inaccessible.
 
+What this tells us: Whether undocumented analyst judgement, exceptions and escalation rules would create gaps when work is delegated to AI.
+
 Suggested evidence: Analyst interviews, exception tables, policy conditions and escalation walkthroughs.
 
 Suggested improvement: Capture undocumented decision rules, exceptions and escalation boundaries.
@@ -192,6 +218,8 @@ Sources: P1, A2.
 Have relevant articles been validated for accuracy and contradictions against current operational practice?
 
 AI rationale: Conflicting or incorrect instructions can make grounded answers unreliable.
+
+What this tells us: Whether the knowledge used for generated answers and resolution steps is accurate and free from conflicting instructions.
 
 Suggested evidence: Article owner sign off and sampled comparison with real working practices.
 
@@ -205,6 +233,8 @@ Are the relevant articles clearly structured, described by metadata and maintain
 
 AI rationale: Well structured, current content improves retrievability and interpretation.
 
+What this tells us: Whether relevant articles are organised and maintained so that the intended AI experience can interpret and retrieve them reliably.
+
 Suggested evidence: Article templates, metadata completeness, review dates and stale content reports.
 
 Suggested improvement: Apply consistent templates and establish scheduled maintenance.
@@ -216,6 +246,8 @@ Sources: R1.
 Can the selected AI experience retrieve the relevant published articles through its configured search sources and profiles?
 
 AI rationale: A correct article offers no value if the AI experience cannot find it.
+
+What this tells us: Whether the AI Search configuration actually retrieves suitable published articles for representative questions.
 
 Suggested evidence: Index status, source and search profile configuration, query test results.
 
@@ -229,6 +261,8 @@ Do knowledge retrieval and generated responses respect the intended user and age
 
 AI rationale: Restricted articles must not appear in responses to unauthorised users.
 
+What this tells us: Whether knowledge retrieval and generated responses protect restricted information for the relevant user and agent identities.
+
 Suggested evidence: Positive and negative access tests with appropriate identities and content classes.
 
 Suggested improvement: Fix access controls and retest restricted retrieval before any pilot.
@@ -240,6 +274,8 @@ Sources: R2, P1.
 Are active catalogue items available for the request types the selected AI experience must recognise or fulfil?
 
 AI rationale: AI needs a valid target for intended requests and redirection.
+
+What this tells us: Whether valid catalogue destinations exist for the requests the AI experience is expected to recognise or fulfil.
 
 Suggested evidence: Request demand mapped to active items and allowed requester audiences.
 
@@ -253,6 +289,8 @@ Are catalogue item names, descriptions and guidance clear enough for AI to disti
 
 AI rationale: Ambiguous item descriptions increase incorrect request selection.
 
+What this tells us: Whether the intended AI experience can distinguish similar catalogue items using their descriptions and eligibility information.
+
 Suggested evidence: Item metadata review and sample utterance matching checks.
 
 Suggested improvement: Clarify labels, descriptions, eligibility and alternative request paths.
@@ -264,6 +302,8 @@ Sources: R9, R7.
 Do the items selected for conversational ordering meet the requirements of the chosen Catalog Agent experience?
 
 AI rationale: Unsupported item configurations fall back to a form or prevent a full conversation.
+
+What this tells us: Whether selected items can be handled by the specific conversational catalogue capability, rather than unexpectedly falling back to forms.
 
 Suggested evidence: Conversational coverage report and checks for supported variables and scripting.
 
@@ -277,6 +317,8 @@ Can the conversation collect and correctly validate the mandatory information ne
 
 AI rationale: Incomplete or incorrectly mapped variables produce failed or unsuitable requests.
 
+What this tells us: Whether the conversational flow can collect complete, valid request data before submission.
+
 Suggested evidence: Variable mapping tests, mandatory field scenarios and conditional input examples.
 
 Suggested improvement: Simplify variables or implement supported validation and dialogue flows.
@@ -288,6 +330,8 @@ Sources: R7, R8.
 Are user eligibility, entitlements and approval rules enforced by the underlying ServiceNow workflow?
 
 AI rationale: An AI recommendation must not bypass access and approval controls.
+
+What this tells us: Whether the platform enforces requester eligibility and approval policies even when the request begins in an AI conversation.
 
 Suggested evidence: Request impersonation cases, positive and negative authorisation tests, approval history.
 
@@ -301,6 +345,8 @@ Do AI initiated submissions create the correct request records and enter a worki
 
 AI rationale: Successful conversational intake is insufficient without controlled downstream execution.
 
+What this tells us: Whether an AI initiated request produces the correct records and can be tracked through real fulfilment.
+
 Suggested evidence: Test order record, fulfilment owner, approval status and tracking history.
 
 Suggested improvement: Fix fulfilment integration and verify record creation and tracking.
@@ -312,6 +358,8 @@ Sources: R7, P1.
 When a request is unclear or unsupported, does the experience provide safe clarification, form fallback or human escalation?
 
 AI rationale: The system must handle exceptions without inventing or forcing unsafe requests.
+
+What this tells us: Whether ambiguous or unsupported requests have a safe way to clarify, redirect or reach a human rather than producing an unsuitable request.
 
 Suggested evidence: Ambiguous, cancelled and unsupported request tests and fallback results.
 
