@@ -1,6 +1,6 @@
 # ServiceNow AI Readiness Assessment Suite
 
-## Research methodology, version 0.6.4
+## Research methodology, version 0.6.5
 
 Published working draft: 10 November 2026. Author: Enamul Haque. Independent research preview.
 
@@ -23,6 +23,16 @@ The seven deferred criteria are an independent research classification based on 
 ## Purpose
 
 The assessment considers whether selected CMDB, Knowledge Management and Service Catalogue foundations are suitable for specific ServiceNow AI activities. A result does not certify a ServiceNow instance, an AI agent, or autonomous deployment.
+
+## Required fields and validation guidance
+
+Each applicable question requires two deliberate inputs before the assessor can continue: a selected answer and a selected evidence status. Valid answers are Yes, Partially, No and Unknown, with Not applicable allowed only for noncritical criteria. Unknown is accepted as an explicit statement that the answer is unavailable, rather than treated as a hidden default.
+
+The evidence status field initially displays Select evidence status and has no preselected status. The assessor must explicitly choose Not supplied, Documents reviewed or Scenarios tested. Not supplied is a valid response when supporting evidence is unavailable, but contributes no evidenced coverage.
+
+Observations are optional for Yes, Partially, No and Unknown answers. A written justification of at least 12 characters is mandatory if Not applicable is selected, because that response excludes the criterion from the applicable score denominator. Critical conditions cannot be marked Not applicable.
+
+When required fields are missing, the application presents an accessible validation summary with links to the affected question IDs and inline messages for the missing answer, evidence status or justification. The next stage remains unavailable until the missing responses are completed. Skipping to a later stage through the navigation also directs the user to the first incomplete questionnaire with the same guidance. An assessor can explicitly select Unknown and Not supplied and proceed without falsely claiming evidence has been reviewed.
 
 ## Privacy, persistence and report export
 
