@@ -1,0 +1,560 @@
+{
+  "name": "ServiceNow AI Readiness Assessment Suite",
+  "version": "0.4.0",
+  "published": "2026-11-10",
+  "author": "Enamul Haque",
+  "disclaimer": "Independent research preview. Foundation suitability is not ServiceNow certification or authorisation to deploy AI. Results are based on user supplied answers, applicability and evidence claims. Verify release, licence, configuration, security and real outcomes separately.",
+  "refs": {
+    "R1": {
+      "title": "ServiceNow Knowledge Base readiness",
+      "url": "https://www.servicenow.com/docs/r/intelligent-experiences/sn-ai-impl-kb-readiness.html",
+      "kind": "Official product documentation, Australia release"
+    },
+    "R2": {
+      "title": "ServiceNow AI Search readiness",
+      "url": "https://www.servicenow.com/docs/r/intelligent-experiences/sn-ai-impl-ai-search.html",
+      "kind": "Official product documentation, Australia release"
+    },
+    "R3": {
+      "title": "ServiceNow incident categorisation agentic workflow",
+      "url": "https://www.servicenow.com/docs/r/it-service-management/now-assist-for-it-service-management-itsm/now-assist-itsm-aiagents-catincidents-usecase.html",
+      "kind": "Official product documentation, verify selected release"
+    },
+    "R5": {
+      "title": "ServiceNow analyze change and incident impact",
+      "url": "https://www.servicenow.com/docs/r/servicenow-platform/now-assist-for-configuration-management-database-cmdb/na-cmdb-skill-impact-analysis-use.html",
+      "kind": "Official product documentation, Australia release"
+    },
+    "R6": {
+      "title": "ServiceNow analyze impact workflow reference",
+      "url": "https://www.servicenow.com/docs/r/servicenow-platform/now-assist-for-configuration-management-database-cmdb/na-cmdb-skill-impact-analysis-ref.html",
+      "kind": "Official product documentation, Australia release"
+    },
+    "R7": {
+      "title": "ServiceNow Catalog Agent",
+      "url": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_catalog_agent.html",
+      "kind": "Official product documentation, Australia release"
+    },
+    "R8": {
+      "title": "ServiceNow conversational catalog status conditions",
+      "url": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/catalog-conv-limitations.html",
+      "kind": "Official product documentation, Australia release"
+    },
+    "R9": {
+      "title": "ServiceNow Service Catalog readiness",
+      "url": "https://www.servicenow.com/docs/r/intelligent-experiences/sn-ai-impl-srvc-catalog.html",
+      "kind": "Official product documentation, Australia release"
+    },
+    "R10": {
+      "title": "ServiceNow Otto for Virtual Agent readiness",
+      "url": "https://www.servicenow.com/docs/r/intelligent-experiences/sn-ai-impl-nava.html",
+      "kind": "Official product documentation, Australia release"
+    },
+    "R12": {
+      "title": "ServiceNow CMDB Health overview",
+      "url": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/overview-cmdb-health.html",
+      "kind": "Official product documentation, Australia release"
+    },
+    "R13": {
+      "title": "ServiceNow Common Service Data Model",
+      "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html",
+      "kind": "Official documentation, Xanadu release. Cross release use requires verification"
+    },
+    "P1": {
+      "title": "L1 Specialist Implementor Playbook",
+      "url": "https://www.servicenow.com/community/itsm-articles/l1-it-service-desk-ai-specialist-implementor-s-playbook/ta-p/3612829",
+      "kind": "ServiceNow Community implementation guidance, distinct from product documentation"
+    },
+    "A1": {
+      "title": "Can We Delegate IT Service Delivery to ServiceNow AI?",
+      "url": "https://enamulhaque.co.uk/can-we-delegate-it-service-delivery-to-servicenow-ai/",
+      "kind": "Author independent research and commentary"
+    },
+    "A2": {
+      "title": "Who Puts AI to Work? The Rise of the Forward Deployed Engineer",
+      "url": "https://enamulhaque.co.uk/who-puts-ai-to-work-the-rise-of-the-forward-deployed-engineer/",
+      "kind": "Author research and tacit tax concept"
+    }
+  },
+  "criteria": [
+    {
+      "id": "C01",
+      "dimension": "CMDB",
+      "text": "Can the selected AI workflow identify the correct configuration item without confusing duplicate, obsolete or incorrectly classified records?",
+      "why": "Incorrect configuration identity can lead to an unsuitable service classification or impact result.",
+      "evidence": "Sample configuration item matches, identification checks and duplicate review.",
+      "refs": [
+        "R3",
+        "R12"
+      ],
+      "improve": "Check identification rules and correct ambiguous or duplicated records."
+    },
+    {
+      "id": "C02",
+      "dimension": "CMDB",
+      "text": "Are the configuration items relevant to this workflow linked to the correct services and service offerings?",
+      "why": "AI categorisation and service context depend on usable service associations.",
+      "evidence": "Sample incident mappings and relevant CSDM relationships.",
+      "refs": [
+        "R3",
+        "R13"
+      ],
+      "improve": "Review and correct the mappings for the services in your pilot."
+    },
+    {
+      "id": "C03",
+      "dimension": "CMDB",
+      "text": "For AI impact analysis, do the relevant configuration items have valid and correctly directed dependency paths to impacted services?",
+      "why": "Topology based impact analysis needs trustworthy dependency direction and coverage.",
+      "evidence": "Dependency paths compared with known service impacts.",
+      "refs": [
+        "R5",
+        "R6"
+      ],
+      "improve": "Remediate the relationships used by your intended impact scenarios."
+    },
+    {
+      "id": "C04",
+      "dimension": "CMDB",
+      "text": "Are the configuration attributes and relationships consumed by AI sufficiently accurate, current and traceable to maintained sources?",
+      "why": "Stale or conflicting source data weakens AI context and conclusions.",
+      "evidence": "Source timestamps, reconciliation review and selected record checks.",
+      "refs": [
+        "R12"
+      ],
+      "improve": "Correct stale records and establish appropriate source refresh controls."
+    },
+    {
+      "id": "C05",
+      "dimension": "CMDB",
+      "text": "Is someone accountable for correcting configuration or service relationship defects discovered during AI evaluation?",
+      "why": "The reliability of AI context depends on a repeatable way of fixing defects.",
+      "evidence": "Named owner, improvement records and examples of resolved defects.",
+      "refs": [
+        "R12",
+        "R13"
+      ],
+      "improve": "Assign a data owner and introduce a tracked defect correction process."
+    },
+    {
+      "id": "C06",
+      "dimension": "CMDB",
+      "text": "Can the intended AI identity access the required configuration information while restricted records remain protected?",
+      "why": "A workflow needs authorised access to relevant context without inappropriate disclosure.",
+      "evidence": "Positive and negative access tests using the intended identities.",
+      "refs": [
+        "R6",
+        "R3"
+      ],
+      "improve": "Review role access and test permitted and denied retrieval paths."
+    },
+    {
+      "id": "K01",
+      "dimension": "Knowledge",
+      "text": "Do approved articles cover the actual questions and incident categories selected for this AI capability?",
+      "why": "Content outside the selected demand patterns does not support useful answers or resolutions.",
+      "evidence": "Top incident categories and queries mapped to relevant published articles.",
+      "refs": [
+        "R1",
+        "P1"
+      ],
+      "improve": "Prioritise coverage of the common scoped incidents and questions."
+    },
+    {
+      "id": "K02",
+      "dimension": "Knowledge",
+      "text": "For selected incident types, are the instructions complete, ordered and usable by the intended audience?",
+      "why": "Autonomous investigation requires repeatable procedures, not merely topic descriptions.",
+      "evidence": "Subject matter review and walkthrough of sample diagnosis and resolution steps.",
+      "refs": [
+        "R1",
+        "P1"
+      ],
+      "improve": "Rewrite procedures with prerequisites, diagnostic steps and expected results."
+    },
+    {
+      "id": "K03",
+      "dimension": "Knowledge",
+      "text": "Are operational decisions, exceptions, unsafe conditions and escalation triggers documented rather than known only to experienced staff?",
+      "why": "The tacit tax arises when the knowledge AI needs remains informal and inaccessible.",
+      "evidence": "Analyst interviews, exception tables, policy conditions and escalation walkthroughs.",
+      "refs": [
+        "P1",
+        "A2"
+      ],
+      "improve": "Capture undocumented decision rules, exceptions and escalation boundaries."
+    },
+    {
+      "id": "K04",
+      "dimension": "Knowledge",
+      "text": "Have relevant articles been validated for accuracy and contradictions against current operational practice?",
+      "why": "Conflicting or incorrect instructions can make grounded answers unreliable.",
+      "evidence": "Article owner sign off and sampled comparison with real working practices.",
+      "refs": [
+        "R1",
+        "P1"
+      ],
+      "improve": "Resolve contradictory guidance and validate material instructions with service owners."
+    },
+    {
+      "id": "K05",
+      "dimension": "Knowledge",
+      "text": "Are the relevant articles clearly structured, described by metadata and maintained through a review process?",
+      "why": "Well structured, current content improves retrievability and interpretation.",
+      "evidence": "Article templates, metadata completeness, review dates and stale content reports.",
+      "refs": [
+        "R1"
+      ],
+      "improve": "Apply consistent templates and establish scheduled maintenance."
+    },
+    {
+      "id": "K06",
+      "dimension": "Knowledge",
+      "text": "Can the selected AI experience retrieve the relevant published articles through its configured search sources and profiles?",
+      "why": "A correct article offers no value if the AI experience cannot find it.",
+      "evidence": "Index status, source and search profile configuration, query test results.",
+      "refs": [
+        "R2"
+      ],
+      "improve": "Correct indexing and search profile configuration, then test representative queries."
+    },
+    {
+      "id": "K07",
+      "dimension": "Knowledge",
+      "text": "Do knowledge retrieval and generated responses respect the intended user and agent access restrictions?",
+      "why": "Restricted articles must not appear in responses to unauthorised users.",
+      "evidence": "Positive and negative access tests with appropriate identities and content classes.",
+      "refs": [
+        "R2",
+        "P1"
+      ],
+      "improve": "Fix access controls and retest restricted retrieval before any pilot."
+    },
+    {
+      "id": "S01",
+      "dimension": "Catalogue",
+      "text": "Are active catalogue items available for the request types the selected AI experience must recognise or fulfil?",
+      "why": "AI needs a valid target for intended requests and redirection.",
+      "evidence": "Request demand mapped to active items and allowed requester audiences.",
+      "refs": [
+        "R9",
+        "P1"
+      ],
+      "improve": "Prioritise missing items for common request intents."
+    },
+    {
+      "id": "S02",
+      "dimension": "Catalogue",
+      "text": "Are catalogue item names, descriptions and guidance clear enough for AI to distinguish similar requests?",
+      "why": "Ambiguous item descriptions increase incorrect request selection.",
+      "evidence": "Item metadata review and sample utterance matching checks.",
+      "refs": [
+        "R9",
+        "R7"
+      ],
+      "improve": "Clarify labels, descriptions, eligibility and alternative request paths."
+    },
+    {
+      "id": "S03",
+      "dimension": "Catalogue",
+      "text": "Do the items selected for conversational ordering meet the requirements of the chosen Catalog Agent experience?",
+      "why": "Unsupported item configurations fall back to a form or prevent a full conversation.",
+      "evidence": "Conversational coverage report and checks for supported variables and scripting.",
+      "refs": [
+        "R7",
+        "R8"
+      ],
+      "improve": "Review item eligibility for the specific mechanism and keep safe form fallback."
+    },
+    {
+      "id": "S04",
+      "dimension": "Catalogue",
+      "text": "Can the conversation collect and correctly validate the mandatory information needed to submit those requests?",
+      "why": "Incomplete or incorrectly mapped variables produce failed or unsuitable requests.",
+      "evidence": "Variable mapping tests, mandatory field scenarios and conditional input examples.",
+      "refs": [
+        "R7",
+        "R8"
+      ],
+      "improve": "Simplify variables or implement supported validation and dialogue flows."
+    },
+    {
+      "id": "S05",
+      "dimension": "Catalogue",
+      "text": "Are user eligibility, entitlements and approval rules enforced by the underlying ServiceNow workflow?",
+      "why": "An AI recommendation must not bypass access and approval controls.",
+      "evidence": "Request impersonation cases, positive and negative authorisation tests, approval history.",
+      "refs": [
+        "R9",
+        "P1"
+      ],
+      "improve": "Enforce user criteria and approvals at platform level, then retest."
+    },
+    {
+      "id": "S06",
+      "dimension": "Catalogue",
+      "text": "Do AI initiated submissions create the correct request records and enter a working fulfilment process?",
+      "why": "Successful conversational intake is insufficient without controlled downstream execution.",
+      "evidence": "Test order record, fulfilment owner, approval status and tracking history.",
+      "refs": [
+        "R7",
+        "P1"
+      ],
+      "improve": "Fix fulfilment integration and verify record creation and tracking."
+    },
+    {
+      "id": "S07",
+      "dimension": "Catalogue",
+      "text": "When a request is unclear or unsupported, does the experience provide safe clarification, form fallback or human escalation?",
+      "why": "The system must handle exceptions without inventing or forcing unsafe requests.",
+      "evidence": "Ambiguous, cancelled and unsupported request tests and fallback results.",
+      "refs": [
+        "R8",
+        "R10",
+        "P1"
+      ],
+      "improve": "Document and test the clarification and fallback routes."
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "l1",
+      "name": "L1 IT Service Desk AI Specialist",
+      "summary": "Knowledge based investigation and controlled handling of selected routine incidents.",
+      "core": [
+        "K01",
+        "K02",
+        "K03",
+        "K04",
+        "K05",
+        "K06",
+        "K07"
+      ],
+      "optional": [
+        {
+          "id": "l1cat",
+          "label": "Include incident redirection or access requests using catalogue items",
+          "criteria": [
+            "S01",
+            "S02",
+            "S05",
+            "S07"
+          ]
+        },
+        {
+          "id": "l1ci",
+          "label": "Include incident investigation that uses CI and service context",
+          "criteria": [
+            "C01",
+            "C02",
+            "C04",
+            "C05",
+            "C06"
+          ]
+        }
+      ],
+      "gates": [
+        "K02",
+        "K03",
+        "K07",
+        "S05",
+        "C06"
+      ],
+      "references": [
+        "P1",
+        "R1"
+      ]
+    },
+    {
+      "id": "search",
+      "name": "AI Search and Otto knowledge answers",
+      "summary": "Grounded knowledge responses to approved user questions.",
+      "core": [
+        "K01",
+        "K04",
+        "K05",
+        "K06",
+        "K07"
+      ],
+      "optional": [
+        {
+          "id": "searchprocedures",
+          "label": "Include procedural troubleshooting answers",
+          "criteria": [
+            "K02",
+            "K03"
+          ]
+        }
+      ],
+      "gates": [
+        "K06",
+        "K07"
+      ],
+      "references": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "triage",
+      "name": "ITSM AI incident triage and categorisation",
+      "summary": "Classification of relevant configuration items, services and offerings.",
+      "core": [
+        "C01",
+        "C02",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "optional": [],
+      "gates": [
+        "C02",
+        "C06"
+      ],
+      "references": [
+        "R3"
+      ]
+    },
+    {
+      "id": "investigation",
+      "name": "ITSM AI investigation workflow",
+      "summary": "Investigate incidents using relevant knowledge and available record context.",
+      "core": [
+        "K01",
+        "K02",
+        "K03",
+        "K04",
+        "K05",
+        "K06",
+        "K07"
+      ],
+      "optional": [
+        {
+          "id": "invci",
+          "label": "Include investigation based on CI and service context",
+          "criteria": [
+            "C01",
+            "C02",
+            "C04",
+            "C05",
+            "C06"
+          ]
+        },
+        {
+          "id": "invcat",
+          "label": "Include directing users to request items",
+          "criteria": [
+            "S01",
+            "S02",
+            "S07"
+          ]
+        }
+      ],
+      "gates": [
+        "K06",
+        "K07",
+        "C06"
+      ],
+      "references": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "impact",
+      "name": "Now Assist CMDB impact analysis",
+      "summary": "Understand impact through relevant configuration items and service dependency paths.",
+      "core": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "optional": [],
+      "gates": [
+        "C03",
+        "C06"
+      ],
+      "references": [
+        "R5",
+        "R6"
+      ]
+    },
+    {
+      "id": "catalog",
+      "name": "Catalog Agent conversational requests",
+      "summary": "Find suitable items, collect required information and submit authorised requests.",
+      "core": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "optional": [],
+      "gates": [
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "references": [
+        "R7",
+        "R8",
+        "R9"
+      ]
+    },
+    {
+      "id": "otto",
+      "name": "Otto conversational request journey",
+      "summary": "Help a user find and complete an eligible catalogue request.",
+      "core": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "optional": [
+        {
+          "id": "ottoqa",
+          "label": "Also include knowledge answers during the request journey",
+          "criteria": [
+            "K01",
+            "K04",
+            "K05",
+            "K06",
+            "K07"
+          ]
+        }
+      ],
+      "gates": [
+        "S05",
+        "S06",
+        "K07"
+      ],
+      "references": [
+        "R10",
+        "R9"
+      ]
+    }
+  ],
+  "responseRubric": {
+    "yes": "The criterion is satisfied in the selected scope. Supporting evidence should be available.",
+    "partial": "The condition is present in some scenarios, but gaps remain.",
+    "no": "The criterion is not satisfied in the selected scope.",
+    "unknown": "Not enough information has been gathered to make a claim.",
+    "na": "Excluded by the assessor with a written scope justification. This does not confirm the requirement is irrelevant."
+  },
+  "evidenceRubric": {
+    "none": "No supporting evidence reported.",
+    "reviewed": "Assessor reports inspecting supporting records or documents.",
+    "tested": "Assessor reports running representative checks. The application does not independently verify these claims."
+  }
+}
