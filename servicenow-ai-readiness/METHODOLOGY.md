@@ -1,6 +1,6 @@
 # ServiceNow AI Readiness Assessment Suite
 
-## Research methodology, version 0.6
+## Research methodology, version 0.6.1
 
 Published working draft: 10 November 2026. Author: Enamul Haque. Independent research preview.
 
@@ -74,7 +74,7 @@ Optional: Include directing users to request items: S01, S02, S07.
 
 Understand impact through relevant configuration items and service dependency paths.
 
-Core: C01, C02, C03, C04, C05, C06. Critical: C03, C06.
+Core: C01, C03, C04, C05, C07, C06. Critical: C01, C03, C06.
 
 ### Catalog Agent conversational requests
 
@@ -90,7 +90,7 @@ Core: S01, S02, S03, S04, S05, S06, S07. Critical: S05, S06, K07.
 
 Optional: Also include knowledge answers during the request journey: K01, K04, K05, K06, K07.
 
-## Interpretation safeguards added in version 0.6
+## Interpretation safeguards added in version 0.6.1
 
 Every displayed numerical fulfilment result must state how many applicable criteria were included in its calculation. Unknown and unanswered criteria are disclosed separately. A 100 percent result calculated from one Yes answer is not a 100 percent assessment of the selected AI capability.
 
@@ -115,87 +115,107 @@ Critical gate criteria are independently flagged if not answered Yes. Even when 
 
 ### C01 CMDB
 
-Can the selected AI workflow identify the correct configuration item without confusing duplicate, obsolete or incorrectly classified records?
+For the selected AI scenarios, is the correct affected configuration item identifiable in the CMDB?
 
-AI rationale: Incorrect configuration identity can lead to an unsuitable service classification or impact result.
+AI rationale: The impact workflow needs the affected CI identifier to determine where dependency tracing begins. Wrong or ambiguous CI records can produce an incorrect analysis.
 
-What this tells us: Whether the intended AI activity can reliably recognise the correct configuration item, rather than use a duplicate or outdated record as operational context.
+What this tells us: Whether an assessor can identify the intended configuration item reliably before AI analysis is enabled. A change or incident record can point to the CI, or the CI can be supplied directly.
 
-Suggested evidence: Sample configuration item matches, identification checks and duplicate review.
+Suggested evidence: Sample incident or change records with the affected CI, CI identifiers and a check for duplicate or obsolete entries.
 
-Suggested improvement: Check identification rules and correct ambiguous or duplicated records.
+Suggested improvement: Correct the CI reference on selected records and resolve duplicate or obsolete CI entries.
 
-Sources: R3, R12.
+Sources: R5, R6, R12.
+
 
 ### C02 CMDB
 
-Are the configuration items relevant to this workflow linked to the correct services and service offerings?
+For AI incident categorisation, are the affected configuration items associated with the correct services and service offerings?
 
-AI rationale: AI categorisation and service context depend on usable service associations.
+AI rationale: Some incident categorisation experiences use service associations to identify which service or offering is affected. This criterion is not a universal requirement for CMDB impact analysis.
 
-What this tells us: Whether service and service offering context associated with the relevant configuration items can be trusted for routing, classification or investigation.
+What this tells us: Whether service associations support the selected incident categorisation scenarios. It does not establish the quality of the dependency graph used by the impact analysis agent.
 
-Suggested evidence: Sample incident mappings and relevant CSDM relationships.
+Suggested evidence: Samples of affected CIs and mapped service and service offering fields for the selected incident types.
 
-Suggested improvement: Review and correct the mappings for the services in your pilot.
+Suggested improvement: Correct the service associations used for incident categorisation.
 
 Sources: R3, R13.
 
+
 ### C03 CMDB
 
-For AI impact analysis, do the relevant configuration items have valid and correctly directed dependency paths to impacted services?
+Does the CMDB contain accurate dependency relationships showing which other CIs and services depend on each affected CI?
 
-AI rationale: Topology based impact analysis needs trustworthy dependency direction and coverage.
+AI rationale: The documented impact workflow traces upstream dependencies using CMDB relationships in cmdb_rel_ci. Missing or incorrectly directed relationships can hide impacted components and services.
 
-What this tells us: Whether the dependency paths needed by AI assisted impact analysis are available and reflect known service effects.
+What this tells us: Whether AI can follow reliable dependency paths from the affected CI to components or services potentially impacted by the selected change or incident.
 
-Suggested evidence: Dependency paths compared with known service impacts.
+Suggested evidence: Review direct relationship records in cmdb_rel_ci. Trace sample dependency paths from the affected CI and compare them with known impacts.
 
-Suggested improvement: Remediate the relationships used by your intended impact scenarios.
+Suggested improvement: Correct missing, inaccurate or reversed dependency relationships relevant to the selected scenarios.
 
 Sources: R5, R6.
 
+
 ### C04 CMDB
 
-Are the configuration attributes and relationships consumed by AI sufficiently accurate, current and traceable to maintained sources?
+Are the CI records and dependency relationships needed for the selected impact scenarios accurate and sufficiently current?
 
-AI rationale: Stale or conflicting source data weakens AI context and conclusions.
+AI rationale: AI reasons over the CMDB context it receives. Old or inaccurate CI data and relationships weaken the impact assessment.
 
-What this tells us: Whether the configuration facts supplied to AI are current enough, accurate enough and traceable to maintained sources.
+What this tells us: Whether the selected dependency data accurately represents the environment being assessed.
 
-Suggested evidence: Source timestamps, reconciliation review and selected record checks.
+Suggested evidence: Sample record checks against maintained sources, last update information and confirmation of relevant dependency accuracy.
 
-Suggested improvement: Correct stale records and establish appropriate source refresh controls.
+Suggested improvement: Update stale CI information and correct inaccurate dependency records.
 
 Sources: R12.
 
+
 ### C05 CMDB
 
-Is someone accountable for correcting configuration or service relationship defects discovered during AI evaluation?
+Is there an accountable owner and a correction process for defects in the relevant CI and dependency data?
 
-AI rationale: The reliability of AI context depends on a repeatable way of fixing defects.
+AI rationale: This is an independent governance recommendation. ServiceNow does not list the existence of a named correction owner as an invocation prerequisite, but persistent defects weaken repeated AI assessments.
 
-What this tells us: Whether discovered configuration defects can be corrected through accountable ownership before they recur in AI outputs.
+What this tells us: Whether discovered CMDB defects have a route to remediation, rather than continuing to affect future AI analyses.
 
-Suggested evidence: Named owner, improvement records and examples of resolved defects.
+Suggested evidence: Named data owners, sample data quality remediation records and a repeatable correction process.
 
-Suggested improvement: Assign a data owner and introduce a tracked defect correction process.
+Suggested improvement: Identify accountable data owners and establish a defect correction procedure.
 
 Sources: R12, R13.
 
+
 ### C06 CMDB
 
-Can the intended AI identity access the required configuration information while restricted records remain protected?
+In a configured environment, can an authorised user invoke impact analysis and read the required CMDB and incident or change information?
 
-AI rationale: A workflow needs authorised access to relevant context without inappropriate disclosure.
+AI rationale: The documented workflow requires appropriate access, including the itil role for reading relevant records and invoking impact analysis. Access needs to be tested after configuration.
 
-What this tells us: Whether AI can obtain the required configuration context while protected records remain unavailable to unauthorised identities.
+What this tells us: Whether the chosen user and configured experience can carry out the documented operation using authorised permissions.
 
-Suggested evidence: Positive and negative access tests using the intended identities.
+Suggested evidence: Positive and negative access tests with appropriate user roles, the relevant incident or change records and impact analysis invocation.
 
-Suggested improvement: Review role access and test permitted and denied retrieval paths.
+Suggested improvement: Confirm the required roles and permissions, then retest the configured impact workflow.
 
-Sources: R6, R3.
+Sources: R5, R6.
+
+
+### C07 CMDB
+
+For each selected impact scenario, is there a clear description of the proposed change or incident for AI to assess?
+
+AI rationale: The documented impact workflow uses a change or incident description alongside the affected CI. Vague descriptions reduce the quality of AI reasoning about likely impact.
+
+What this tells us: Whether enough information about the planned change or incident is available for the AI to reason about the scope and possible consequences.
+
+Suggested evidence: Representative incident or change descriptions, including the action, affected CI, purpose and operational context. A direct invocation can supply a CI identifier and description.
+
+Suggested improvement: Improve change or incident descriptions so the proposed action, affected CI and operational context are clear.
+
+Sources: R5, R6.
 
 ### K01 Knowledge
 
@@ -484,3 +504,21 @@ Source type: Author research and tacit tax concept
 ## Known limitations
 
 The assessment focuses on three foundations. It does not evaluate the whole platform configuration, contract, licence, human oversight arrangements, agent routing, privilege boundaries beyond questions, model behaviour or production operation. Assessor answers are not independently verified. A limited scoped sample may not represent the enterprise. The response scale and equal weights are a pilot method rather than an externally validated quantitative model. Source references must be rechecked against the customer release and relevant Store application.
+
+## CMDB impact analysis clarification in revision 0.6.1
+
+Research review against the ServiceNow Australia release documentation established that the Assess CMDB impact workflow traverses the dependency graph represented by the CMDB relationship table, cmdb_rel_ci. The service association table svc_ci_assoc is not part of this traversal. The previous mapping of C02 to impact analysis was therefore misleading. C02 remains a separate service identification criterion for incident categorisation scenarios, but is no longer included in the impact analysis profile.
+
+C07 now evaluates whether the intended change or incident context is sufficiently described. A record can supply its affected CI and description, or the workflow may be invoked with a CI sys_id and a direct description. This criterion is based on the documented workflow input and AI reasoning process.
+
+The revised impact profile still presents six criteria in configured validation mode. It defers C06 when the organisation is only preparing for adoption. CMDB data stewardship C05 is an independent research recommendation, not an official required condition to invoke the ServiceNow workflow. Technical prerequisites and independent good practice must not be presented as identical.
+
+The application now displays both assessment stage options directly, rather than hiding them inside a dropdown, and repeats the selected stage above each questionnaire.
+
+Primary references:
+
+https://www.servicenow.com/docs/r/servicenow-platform/now-assist-for-configuration-management-database-cmdb/na-cmdb-skill-impact-analysis-use.html
+
+https://www.servicenow.com/docs/r/servicenow-platform/now-assist-for-configuration-management-database-cmdb/na-cmdb-skill-impact-analysis-ref.html
+
+https://www.servicenow.com/docs/r/servicenow-platform/now-assist-for-configuration-management-database-cmdb/na-cmdb-awf-impact-analysis-using.html
