@@ -1,6 +1,6 @@
 {
   "name": "ServiceNow AI Readiness Assessment Suite",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "published": "2026-11-10",
   "author": "Enamul Haque",
   "disclaimer": "Independent research preview. Foundation suitability is not ServiceNow certification or authorisation to deploy AI. Results are based on user supplied answers, applicability and evidence claims. Verify release, licence, configuration, security and real outcomes separately.",
@@ -87,7 +87,8 @@
         "R3",
         "R12"
       ],
-      "improve": "Check identification rules and correct ambiguous or duplicated records."
+      "improve": "Check identification rules and correct ambiguous or duplicated records.",
+      "learn": "Whether the intended AI activity can reliably recognise the correct configuration item, rather than use a duplicate or outdated record as operational context."
     },
     {
       "id": "C02",
@@ -99,7 +100,8 @@
         "R3",
         "R13"
       ],
-      "improve": "Review and correct the mappings for the services in your pilot."
+      "improve": "Review and correct the mappings for the services in your pilot.",
+      "learn": "Whether service and service offering context associated with the relevant configuration items can be trusted for routing, classification or investigation."
     },
     {
       "id": "C03",
@@ -111,7 +113,8 @@
         "R5",
         "R6"
       ],
-      "improve": "Remediate the relationships used by your intended impact scenarios."
+      "improve": "Remediate the relationships used by your intended impact scenarios.",
+      "learn": "Whether the dependency paths needed by AI assisted impact analysis are available and reflect known service effects."
     },
     {
       "id": "C04",
@@ -122,7 +125,8 @@
       "refs": [
         "R12"
       ],
-      "improve": "Correct stale records and establish appropriate source refresh controls."
+      "improve": "Correct stale records and establish appropriate source refresh controls.",
+      "learn": "Whether the configuration facts supplied to AI are current enough, accurate enough and traceable to maintained sources."
     },
     {
       "id": "C05",
@@ -134,7 +138,8 @@
         "R12",
         "R13"
       ],
-      "improve": "Assign a data owner and introduce a tracked defect correction process."
+      "improve": "Assign a data owner and introduce a tracked defect correction process.",
+      "learn": "Whether discovered configuration defects can be corrected through accountable ownership before they recur in AI outputs."
     },
     {
       "id": "C06",
@@ -146,7 +151,8 @@
         "R6",
         "R3"
       ],
-      "improve": "Review role access and test permitted and denied retrieval paths."
+      "improve": "Review role access and test permitted and denied retrieval paths.",
+      "learn": "Whether AI can obtain the required configuration context while protected records remain unavailable to unauthorised identities."
     },
     {
       "id": "K01",
@@ -158,7 +164,8 @@
         "R1",
         "P1"
       ],
-      "improve": "Prioritise coverage of the common scoped incidents and questions."
+      "improve": "Prioritise coverage of the common scoped incidents and questions.",
+      "learn": "Whether approved knowledge covers the real questions and incident categories within the chosen AI scope. Missing coverage becomes a priority for knowledge preparation."
     },
     {
       "id": "K02",
@@ -170,7 +177,8 @@
         "R1",
         "P1"
       ],
-      "improve": "Rewrite procedures with prerequisites, diagnostic steps and expected results."
+      "improve": "Rewrite procedures with prerequisites, diagnostic steps and expected results.",
+      "learn": "Whether the selected incident procedures contain enough ordered detail for an AI assistant or specialist to follow safely and consistently."
     },
     {
       "id": "K03",
@@ -182,7 +190,8 @@
         "P1",
         "A2"
       ],
-      "improve": "Capture undocumented decision rules, exceptions and escalation boundaries."
+      "improve": "Capture undocumented decision rules, exceptions and escalation boundaries.",
+      "learn": "Whether undocumented analyst judgement, exceptions and escalation rules would create gaps when work is delegated to AI."
     },
     {
       "id": "K04",
@@ -194,7 +203,8 @@
         "R1",
         "P1"
       ],
-      "improve": "Resolve contradictory guidance and validate material instructions with service owners."
+      "improve": "Resolve contradictory guidance and validate material instructions with service owners.",
+      "learn": "Whether the knowledge used for generated answers and resolution steps is accurate and free from conflicting instructions."
     },
     {
       "id": "K05",
@@ -205,7 +215,8 @@
       "refs": [
         "R1"
       ],
-      "improve": "Apply consistent templates and establish scheduled maintenance."
+      "improve": "Apply consistent templates and establish scheduled maintenance.",
+      "learn": "Whether relevant articles are organised and maintained so that the intended AI experience can interpret and retrieve them reliably."
     },
     {
       "id": "K06",
@@ -216,7 +227,8 @@
       "refs": [
         "R2"
       ],
-      "improve": "Correct indexing and search profile configuration, then test representative queries."
+      "improve": "Correct indexing and search profile configuration, then test representative queries.",
+      "learn": "Whether the AI Search configuration actually retrieves suitable published articles for representative questions."
     },
     {
       "id": "K07",
@@ -228,7 +240,8 @@
         "R2",
         "P1"
       ],
-      "improve": "Fix access controls and retest restricted retrieval before any pilot."
+      "improve": "Fix access controls and retest restricted retrieval before any pilot.",
+      "learn": "Whether knowledge retrieval and generated responses protect restricted information for the relevant user and agent identities."
     },
     {
       "id": "S01",
@@ -240,7 +253,8 @@
         "R9",
         "P1"
       ],
-      "improve": "Prioritise missing items for common request intents."
+      "improve": "Prioritise missing items for common request intents.",
+      "learn": "Whether valid catalogue destinations exist for the requests the AI experience is expected to recognise or fulfil."
     },
     {
       "id": "S02",
@@ -252,7 +266,8 @@
         "R9",
         "R7"
       ],
-      "improve": "Clarify labels, descriptions, eligibility and alternative request paths."
+      "improve": "Clarify labels, descriptions, eligibility and alternative request paths.",
+      "learn": "Whether the intended AI experience can distinguish similar catalogue items using their descriptions and eligibility information."
     },
     {
       "id": "S03",
@@ -264,7 +279,8 @@
         "R7",
         "R8"
       ],
-      "improve": "Review item eligibility for the specific mechanism and keep safe form fallback."
+      "improve": "Review item eligibility for the specific mechanism and keep safe form fallback.",
+      "learn": "Whether selected items can be handled by the specific conversational catalogue capability, rather than unexpectedly falling back to forms."
     },
     {
       "id": "S04",
@@ -276,7 +292,8 @@
         "R7",
         "R8"
       ],
-      "improve": "Simplify variables or implement supported validation and dialogue flows."
+      "improve": "Simplify variables or implement supported validation and dialogue flows.",
+      "learn": "Whether the conversational flow can collect complete, valid request data before submission."
     },
     {
       "id": "S05",
@@ -288,7 +305,8 @@
         "R9",
         "P1"
       ],
-      "improve": "Enforce user criteria and approvals at platform level, then retest."
+      "improve": "Enforce user criteria and approvals at platform level, then retest.",
+      "learn": "Whether the platform enforces requester eligibility and approval policies even when the request begins in an AI conversation."
     },
     {
       "id": "S06",
@@ -300,7 +318,8 @@
         "R7",
         "P1"
       ],
-      "improve": "Fix fulfilment integration and verify record creation and tracking."
+      "improve": "Fix fulfilment integration and verify record creation and tracking.",
+      "learn": "Whether an AI initiated request produces the correct records and can be tracked through real fulfilment."
     },
     {
       "id": "S07",
@@ -313,7 +332,8 @@
         "R10",
         "P1"
       ],
-      "improve": "Document and test the clarification and fallback routes."
+      "improve": "Document and test the clarification and fallback routes.",
+      "learn": "Whether ambiguous or unsupported requests have a safe way to clarify, redirect or reach a human rather than producing an unsuitable request."
     }
   ],
   "capabilities": [
