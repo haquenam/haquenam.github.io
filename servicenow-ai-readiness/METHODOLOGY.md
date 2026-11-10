@@ -1,6 +1,6 @@
 # ServiceNow AI Readiness Assessment Suite
 
-## Research methodology, version 0.6.6
+## Research methodology, version 0.6.7
 
 Published working draft: 10 November 2026. Author: Enamul Haque. Independent research preview.
 
@@ -34,7 +34,7 @@ Observations are optional for Yes, Partially, No and Unknown answers. A written 
 
 When required fields are missing, the application presents an accessible validation summary with links to the affected question IDs and inline messages for the missing answer, evidence status or justification. The next stage remains unavailable until the missing responses are completed. Skipping to a later stage through the navigation also directs the user to the first incomplete questionnaire with the same guidance. An assessor can explicitly select Unknown and Not supplied and proceed without falsely claiming evidence has been reviewed.
 
-## Assessment navigation controls
+## Introduction and assessment configuration\n\nThe opening screen is labelled Assessment Overview, with the distinct main heading Introduction to the ServiceNow AI Readiness Assessment. The introductory narrative describes the independent research tool by Enamul Haque, its three foundation dimensions, the seven ServiceNow AI capability profiles and the limitations of the assessment. Moveworks is part of the wider AI discussion, but Moveworks readiness is not independently assessed by this release. The public assessment is accessible without a separate application licence; source visibility alone is not a claim of an open source licence.\n\nThe configuration screen is labelled Configure Your Assessment and has the distinct main heading Choose Your AI Capability and Assessment Scope. The capability dropdown includes a brief instruction asking the visitor to select the capability for which they intend to conduct the assessment. Before configuration, a highlighted note in the left navigation explains that later steps unlock only after selecting Continue to questions. Existing field and stage validation remains unchanged.\n\n## Assessment navigation controls
 
 At first entry, only Assessment Overview and Configure Your Assessment are available in the navigation. The capability specific foundation checks remain disabled until the assessor chooses the intended capability, assessment stage and operational scope, then selects Continue to questions. After configuration, the first relevant foundation opens. Later foundation sections and Assessment Results become accessible when the required answers and evidence selections in preceding sections are complete. Disabled navigation options cannot bypass these checks.
 
