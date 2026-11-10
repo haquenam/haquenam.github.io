@@ -1,6 +1,6 @@
 # ServiceNow AI Readiness Assessment Suite
 
-## Research methodology, version 0.5
+## Research methodology, version 0.5.1
 
 Published working draft: 10 November 2026. Author: Enamul Haque. Independent research preview.
 
@@ -73,6 +73,16 @@ Help a user find and complete an eligible catalogue request.
 Core: S01, S02, S03, S04, S05, S06, S07. Critical: S05, S06, K07.
 
 Optional: Also include knowledge answers during the request journey: K01, K04, K05, K06, K07.
+
+## Interpretation safeguards added in version 0.5.1
+
+Every displayed numerical fulfilment result must state how many applicable criteria were included in its calculation. Unknown and unanswered criteria are disclosed separately. A 100 percent result calculated from one Yes answer is not a 100 percent assessment of the selected AI capability.
+
+Assessment completeness includes a deliberately selected Unknown answer because the user has responded to the question. Such an answer is not evidence of foundation suitability. The fulfilment denominator counts only Yes, Partially and No responses. Evidence coverage is a separate assessor reported measure, never a verified truth claim.
+
+Where any applicable criteria are unknown or unanswered, display a prominent limitation warning. Where evidence coverage is incomplete, display a separate evidence warning. Critical conditions continue to be reported independently of averages.
+
+These changes improve reporting transparency but do not resolve the separate design finding about distinguishing preparation for adoption from observed technical verification. That distinction remains mandatory before production release.
 
 ## Response values and calculation
 
