@@ -1,6 +1,6 @@
 # ServiceNow AI Readiness Assessment Suite
 
-## Research methodology, version 0.6.2
+## Research methodology, version 0.6.3
 
 Published working draft: 10 November 2026. Author: Enamul Haque. Independent research preview.
 
@@ -606,3 +606,8 @@ R17: ServiceNow Otto for Virtual Agent readiness
 https://www.servicenow.com/docs/r/intelligent-experiences/sn-ai-impl-nava.html
 
 Source type: Official ServiceNow Australia documentation
+
+
+## Assessment navigation presentation
+
+The application uses the visible steps Assessment Overview, Configure Your Assessment, relevant foundation readiness checks, and Assessment Results. Foundation checks are displayed as Check CMDB Readiness, Check Knowledge Readiness and Check Service Catalogue Readiness only when they apply to the selected capability. These labels do not change the criteria, applicability or scoring methodology.
