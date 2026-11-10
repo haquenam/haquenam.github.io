@@ -1,6 +1,6 @@
 # ServiceNow AI Readiness Assessment Suite
 
-## Research methodology, version 0.6.1
+## Research methodology, version 0.6.2
 
 Published working draft: 10 November 2026. Author: Enamul Haque. Independent research preview.
 
@@ -32,73 +32,131 @@ Each question presents a question mark beside the wording. Hover with a mouse, f
 
 The introductory page is a feature of the application, not an additional WordPress page. WordPress publication remains a later checkpoint after the research model is approved.
 
-## Capability selection
+## Capability selection and source verified dependencies
 
-The user selects a named ServiceNow AI activity, whether they are preparing or validating a configured experience, and its intended operational scope. Core criteria always apply. Optional workflow conditions are selected explicitly and then add relevant foundation criteria. Unrelated criteria do not enter the calculation.
+A selected ServiceNow AI capability can depend on more than one of the three foundations. Core dependencies are assessed for every selected use case. Conditional dependencies are added when an applicable operational scenario is selected. Additional product prerequisites and data sources, such as incident history, routing and integration, are identified but are not scored by this foundation assessment.
+
+For a broad L1 Specialist assessment, the catalogue and CI scenarios are selected initially. They can be deselected because neither is a universal prerequisite for every incident. The report must state which scenarios were included. This is an interface default, not a claim that all three foundations are always mandatory.
 
 ### L1 IT Service Desk AI Specialist
 
-Knowledge based investigation and controlled handling of selected routine incidents.
+Resolve selected L1 incidents with procedural knowledge, historical context and supported catalogue or CI activities where those scenarios apply.
 
-Core: K01, K02, K03, K04, K05, K06, K07. Critical: K02, K03, K07, S05, C06.
+Knowledge: Core. Procedural articles, documented exceptions and authorised search support investigation and resolution. Sources: P1, R14.
 
-Optional: Include incident redirection or access requests using catalogue items: S01, S02, S05, S07.
+Catalogue: Conditional. Catalogue information supports identifying incidents that are actually requests, suggesting an appropriate item and eligible request scenarios. It is not necessary for every incident. Sources: P1, R14.
 
-Optional: Include incident investigation that uses CI and service context: C01, C02, C04, C05, C06.
+CMDB: Conditional. CI identity and service context matter when the selected L1 workflow classifies CIs or investigates a configuration related issue. Full dependency topology is not a universal prerequisite. Sources: R16, P1.
+
+Core criteria: K01, K02, K03, K04, K05, K06, K07.
+
+Conditional scenario: Include incident redirection or access requests using catalogue items. Criteria: S01, S02, S05, S07. Selected initially in the broad L1 profile.
+
+Conditional scenario: Include incident investigation that uses CI and service context. Criteria: C01, C02, C04, C05, C06. Selected initially in the broad L1 profile.
+
+Not scored: Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment.
 
 ### AI Search and Otto knowledge answers
 
 Grounded knowledge responses to approved user questions.
 
-Core: K01, K04, K05, K06, K07. Critical: K06, K07.
+Knowledge: Core. Approved published articles, correct indexing and authorised retrieval support grounded answers. Sources: R1, R2.
 
-Optional: Include procedural troubleshooting answers: K02, K03.
+Catalogue: None. The selected profile tests knowledge answers, not conversational item selection or ordering. Sources: R2.
+
+CMDB: None. No CMDB activity is selected in this knowledge answer profile. Sources: R2.
+
+Core criteria: K01, K04, K05, K06, K07.
+
+Conditional scenario: Include procedural troubleshooting answers. Criteria: K02, K03.
+
+Not scored: Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment.
 
 ### ITSM AI incident triage and categorisation
 
 Classification of relevant configuration items, services and offerings.
 
-Core: C01, C02, C04, C05, C06. Critical: C02, C06.
+Knowledge: None. The selected triage profile does not assess resolution knowledge. Sources: R3.
+
+Catalogue: None. The documented workflow classifies services and service offerings, not request catalogue items. Sources: R3.
+
+CMDB: Core. The workflow assigns relevant CIs, services and service offerings when classifying incidents. Sources: R3.
+
+Core criteria: C01, C02, C04, C05, C06.
+
+Not scored: Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment.
 
 ### ITSM AI investigation workflow
 
 Investigate incidents using relevant knowledge and available record context.
 
-Core: K01, K02, K03, K04, K05, K06, K07. Critical: K06, K07, C06.
+Knowledge: Core. The documented resolution investigation uses relevant knowledge articles and similar incidents. Sources: R15.
 
-Optional: Include investigation based on CI and service context: C01, C02, C04, C05, C06.
+Catalogue: Core. The documented investigation workflow searches for and recommends related catalogue items; this is distinct from submitting an order. Sources: R15.
 
-Optional: Include directing users to request items: S01, S02, S07.
+CMDB: Conditional. CI context is relevant when the chosen investigation also uses related configuration records or the Incident Assist experience. Sources: R16.
+
+Core criteria: K01, K02, K03, K04, K05, K06, K07, S01, S02.
+
+Conditional scenario: Include investigation based on CI and service context. Criteria: C01, C02, C04, C05, C06.
+
+Conditional scenario: Include request redirection with clarification or human fallback. Criteria: S07.
+
+Not scored: Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment.
 
 ### Now Assist CMDB impact analysis
 
-Understand impact through relevant configuration items and service dependency paths.
+Assess whether the correct affected CI, change or incident context and CMDB dependency paths can support an AI impact assessment.
 
-Core: C01, C03, C04, C05, C07, C06. Critical: C01, C03, C06.
+Knowledge: None. The documented impact calculation does not require a knowledge article corpus. Sources: R5.
+
+Catalogue: None. Catalogue item eligibility is not an input to the documented dependency topology traversal. Sources: R5.
+
+CMDB: Core. The impact workflow needs an affected CI, a meaningful change or incident description and upstream dependency relationships. Sources: R5, R6.
+
+Core criteria: C01, C03, C04, C05, C07, C06.
+
+Not scored: Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment.
 
 ### Catalog Agent conversational requests
 
 Find suitable items, collect required information and submit authorised requests.
 
-Core: S01, S02, S03, S04, S05, S06, S07. Critical: S03, S04, S05, S06.
+Knowledge: None. Knowledge may enhance an extended journey but is not a core input to this catalogue ordering profile. Sources: R7.
+
+Catalogue: Core. The Catalog Agent needs eligible items, variable definitions, requester rules and functioning fulfilment. Sources: R7, R9.
+
+CMDB: None. CMDB relationships are not a general prerequisite for conversational catalogue ordering. Sources: R7.
+
+Core criteria: S01, S02, S03, S04, S05, S06, S07.
+
+Not scored: Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment.
 
 ### Otto conversational request journey
 
 Help a user find and complete an eligible catalogue request.
 
-Core: S01, S02, S03, S04, S05, S06, S07. Critical: S05, S06, K07.
+Knowledge: Conditional. A combined conversational journey may answer knowledge questions before or during a request. Sources: R17.
 
-Optional: Also include knowledge answers during the request journey: K01, K04, K05, K06, K07.
+Catalogue: Core. This selected Otto journey is for conversational service requests and depends on eligible catalogue items. Sources: R17, R9.
 
-## Interpretation safeguards added in version 0.6.1
+CMDB: None. The selected conversational request journey does not assess CI impact analysis. Sources: R17.
 
-Every displayed numerical fulfilment result must state how many applicable criteria were included in its calculation. Unknown and unanswered criteria are disclosed separately. A 100 percent result calculated from one Yes answer is not a 100 percent assessment of the selected AI capability.
+Core criteria: S01, S02, S03, S04, S05, S06, S07.
 
-Assessment completeness includes a deliberately selected Unknown answer because the user has responded to the question. Such an answer is not evidence of foundation suitability. The fulfilment denominator counts only Yes, Partially and No responses. Evidence coverage is a separate assessor reported measure, never a verified truth claim.
+Conditional scenario: Also include knowledge answers during the request journey. Criteria: K01, K04, K05, K06, K07.
 
-Where any applicable criteria are unknown or unanswered, display a prominent limitation warning. Where evidence coverage is incomplete, display a separate evidence warning. Critical conditions continue to be reported independently of averages.
+Not scored: Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment.
 
-These changes improve reporting transparency but do not resolve the separate design finding about distinguishing preparation for adoption from observed technical verification. That distinction remains mandatory before production release.
+### Cross validation decisions
+
+The L1 Specialist uses procedural Knowledge as a foundational input, with catalogue items for request related activities and CI context for supported classification or investigation scenarios. Official ServiceNow release notes describe configurable CI classification, but do not establish that every L1 incident requires a complete CMDB dependency graph.
+
+The documented Investigate and resolve ITSM incidents workflow uses knowledge, similar resolved incidents and catalogue item recommendations. Its core questionnaire therefore includes relevant Catalogue discovery criteria S01 and S02. Request clarification or safe fallback S07 is conditional when request redirection is included.
+
+Incident triage focuses on CI, service and service offering classification. AI Search knowledge answers focus on knowledge. Now Assist CMDB impact analysis focuses on the affected CI, upstream relationships and change context. Catalog Agent focuses on request items and conversational variables. Otto conversational request journeys focus on catalogue items, with knowledge added when the chosen journey includes question answering.
+
+No overall product certification is provided. Product documentation and licensing must be checked against the installed release.
 
 ## Response values and calculation
 
@@ -522,3 +580,29 @@ https://www.servicenow.com/docs/r/servicenow-platform/now-assist-for-configurati
 https://www.servicenow.com/docs/r/servicenow-platform/now-assist-for-configuration-management-database-cmdb/na-cmdb-skill-impact-analysis-ref.html
 
 https://www.servicenow.com/docs/r/servicenow-platform/now-assist-for-configuration-management-database-cmdb/na-cmdb-awf-impact-analysis-using.html
+
+## Additional primary source verification for profile mapping
+
+R14: L1 IT Service Desk AI Specialist FAQ
+
+https://www.servicenow.com/community/itsm-articles/l1-it-service-desk-ai-specialist-faq/ta-p/3612816
+
+Source type: ServiceNow Community FAQ, revised October 2026, not a contractual specification
+
+R15: Investigate and resolve ITSM incidents
+
+https://www.servicenow.com/docs/r/zurich/it-service-management/now-assist-for-it-service-management-itsm/now-assist-itsm-aiagents-incident-resolver-workflow.html
+
+Source type: Official ServiceNow Zurich documentation
+
+R16: Now Assist Suite release notes, April 2026
+
+https://www.servicenow.com/docs/r/store-release-notes/na-suite-rn-2026-04-09.html
+
+Source type: Official ServiceNow release notes, refer to installed product version
+
+R17: ServiceNow Otto for Virtual Agent readiness
+
+https://www.servicenow.com/docs/r/intelligent-experiences/sn-ai-impl-nava.html
+
+Source type: Official ServiceNow Australia documentation
