@@ -1,6 +1,6 @@
 {
   "name": "ServiceNow AI Readiness Assessment Suite",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "published": "2026-11-10",
   "author": "Enamul Haque",
   "disclaimer": "Independent research preview. Foundation suitability is not ServiceNow certification or authorisation to deploy AI. Results are based on user supplied answers, applicability and evidence claims. Verify release, licence, configuration, security and real outcomes separately.",
@@ -74,6 +74,26 @@
       "title": "Who Puts AI to Work? The Rise of the Forward Deployed Engineer",
       "url": "https://enamulhaque.co.uk/who-puts-ai-to-work-the-rise-of-the-forward-deployed-engineer/",
       "kind": "Author research and tacit tax concept"
+    },
+    "R14": {
+      "title": "L1 IT Service Desk AI Specialist FAQ",
+      "url": "https://www.servicenow.com/community/itsm-articles/l1-it-service-desk-ai-specialist-faq/ta-p/3612816",
+      "kind": "ServiceNow Community FAQ, revised October 2026, not a contractual specification"
+    },
+    "R15": {
+      "title": "Investigate and resolve ITSM incidents",
+      "url": "https://www.servicenow.com/docs/r/zurich/it-service-management/now-assist-for-it-service-management-itsm/now-assist-itsm-aiagents-incident-resolver-workflow.html",
+      "kind": "Official ServiceNow Zurich documentation"
+    },
+    "R16": {
+      "title": "Now Assist Suite release notes, April 2026",
+      "url": "https://www.servicenow.com/docs/r/store-release-notes/na-suite-rn-2026-04-09.html",
+      "kind": "Official ServiceNow release notes, refer to installed product version"
+    },
+    "R17": {
+      "title": "ServiceNow Otto for Virtual Agent readiness",
+      "url": "https://www.servicenow.com/docs/r/intelligent-experiences/sn-ai-impl-nava.html",
+      "kind": "Official ServiceNow Australia documentation"
     }
   },
   "criteria": [
@@ -375,7 +395,7 @@
     {
       "id": "l1",
       "name": "L1 IT Service Desk AI Specialist",
-      "summary": "Knowledge based investigation and controlled handling of selected routine incidents.",
+      "summary": "Resolve selected L1 incidents with procedural knowledge, historical context and supported catalogue or CI activities where those scenarios apply.",
       "core": [
         "K01",
         "K02",
@@ -394,7 +414,8 @@
             "S02",
             "S05",
             "S07"
-          ]
+          ],
+          "defaultSelected": true
         },
         {
           "id": "l1ci",
@@ -405,7 +426,8 @@
             "C04",
             "C05",
             "C06"
-          ]
+          ],
+          "defaultSelected": true
         }
       ],
       "gates": [
@@ -419,7 +441,34 @@
         "P1",
         "R1"
       ],
-      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution."
+      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution.",
+      "foundations": {
+        "Knowledge": {
+          "role": "core",
+          "reason": "Procedural articles, documented exceptions and authorised search support investigation and resolution.",
+          "sources": [
+            "P1",
+            "R14"
+          ]
+        },
+        "Catalogue": {
+          "role": "conditional",
+          "reason": "Catalogue information supports identifying incidents that are actually requests, suggesting an appropriate item and eligible request scenarios. It is not necessary for every incident.",
+          "sources": [
+            "P1",
+            "R14"
+          ]
+        },
+        "CMDB": {
+          "role": "conditional",
+          "reason": "CI identity and service context matter when the selected L1 workflow classifies CIs or investigates a configuration related issue. Full dependency topology is not a universal prerequisite.",
+          "sources": [
+            "R16",
+            "P1"
+          ]
+        }
+      },
+      "otherRequirements": "Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment."
     },
     {
       "id": "search",
@@ -450,7 +499,32 @@
         "R1",
         "R2"
       ],
-      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution."
+      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution.",
+      "foundations": {
+        "Knowledge": {
+          "role": "core",
+          "reason": "Approved published articles, correct indexing and authorised retrieval support grounded answers.",
+          "sources": [
+            "R1",
+            "R2"
+          ]
+        },
+        "Catalogue": {
+          "role": "none",
+          "reason": "The selected profile tests knowledge answers, not conversational item selection or ordering.",
+          "sources": [
+            "R2"
+          ]
+        },
+        "CMDB": {
+          "role": "none",
+          "reason": "No CMDB activity is selected in this knowledge answer profile.",
+          "sources": [
+            "R2"
+          ]
+        }
+      },
+      "otherRequirements": "Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment."
     },
     {
       "id": "triage",
@@ -471,7 +545,31 @@
       "references": [
         "R3"
       ],
-      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution."
+      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution.",
+      "foundations": {
+        "Knowledge": {
+          "role": "none",
+          "reason": "The selected triage profile does not assess resolution knowledge.",
+          "sources": [
+            "R3"
+          ]
+        },
+        "Catalogue": {
+          "role": "none",
+          "reason": "The documented workflow classifies services and service offerings, not request catalogue items.",
+          "sources": [
+            "R3"
+          ]
+        },
+        "CMDB": {
+          "role": "core",
+          "reason": "The workflow assigns relevant CIs, services and service offerings when classifying incidents.",
+          "sources": [
+            "R3"
+          ]
+        }
+      },
+      "otherRequirements": "Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment."
     },
     {
       "id": "investigation",
@@ -484,7 +582,9 @@
         "K04",
         "K05",
         "K06",
-        "K07"
+        "K07",
+        "S01",
+        "S02"
       ],
       "optional": [
         {
@@ -500,10 +600,8 @@
         },
         {
           "id": "invcat",
-          "label": "Include directing users to request items",
+          "label": "Include request redirection with clarification or human fallback",
           "criteria": [
-            "S01",
-            "S02",
             "S07"
           ]
         }
@@ -517,7 +615,31 @@
         "R1",
         "R2"
       ],
-      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution."
+      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution.",
+      "foundations": {
+        "Knowledge": {
+          "role": "core",
+          "reason": "The documented resolution investigation uses relevant knowledge articles and similar incidents.",
+          "sources": [
+            "R15"
+          ]
+        },
+        "Catalogue": {
+          "role": "core",
+          "reason": "The documented investigation workflow searches for and recommends related catalogue items; this is distinct from submitting an order.",
+          "sources": [
+            "R15"
+          ]
+        },
+        "CMDB": {
+          "role": "conditional",
+          "reason": "CI context is relevant when the chosen investigation also uses related configuration records or the Incident Assist experience.",
+          "sources": [
+            "R16"
+          ]
+        }
+      },
+      "otherRequirements": "Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment."
     },
     {
       "id": "impact",
@@ -541,7 +663,32 @@
         "R5",
         "R6"
       ],
-      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution."
+      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution.",
+      "foundations": {
+        "Knowledge": {
+          "role": "none",
+          "reason": "The documented impact calculation does not require a knowledge article corpus.",
+          "sources": [
+            "R5"
+          ]
+        },
+        "Catalogue": {
+          "role": "none",
+          "reason": "Catalogue item eligibility is not an input to the documented dependency topology traversal.",
+          "sources": [
+            "R5"
+          ]
+        },
+        "CMDB": {
+          "role": "core",
+          "reason": "The impact workflow needs an affected CI, a meaningful change or incident description and upstream dependency relationships.",
+          "sources": [
+            "R5",
+            "R6"
+          ]
+        }
+      },
+      "otherRequirements": "Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment."
     },
     {
       "id": "catalog",
@@ -568,7 +715,32 @@
         "R8",
         "R9"
       ],
-      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution."
+      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution.",
+      "foundations": {
+        "Knowledge": {
+          "role": "none",
+          "reason": "Knowledge may enhance an extended journey but is not a core input to this catalogue ordering profile.",
+          "sources": [
+            "R7"
+          ]
+        },
+        "Catalogue": {
+          "role": "core",
+          "reason": "The Catalog Agent needs eligible items, variable definitions, requester rules and functioning fulfilment.",
+          "sources": [
+            "R7",
+            "R9"
+          ]
+        },
+        "CMDB": {
+          "role": "none",
+          "reason": "CMDB relationships are not a general prerequisite for conversational catalogue ordering.",
+          "sources": [
+            "R7"
+          ]
+        }
+      },
+      "otherRequirements": "Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment."
     },
     {
       "id": "otto",
@@ -605,7 +777,32 @@
         "R10",
         "R9"
       ],
-      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution."
+      "preparationNote": "The preparation assessment does not prove that this capability is configured, permitted or capable of reliable execution.",
+      "foundations": {
+        "Knowledge": {
+          "role": "conditional",
+          "reason": "A combined conversational journey may answer knowledge questions before or during a request.",
+          "sources": [
+            "R17"
+          ]
+        },
+        "Catalogue": {
+          "role": "core",
+          "reason": "This selected Otto journey is for conversational service requests and depends on eligible catalogue items.",
+          "sources": [
+            "R17",
+            "R9"
+          ]
+        },
+        "CMDB": {
+          "role": "none",
+          "reason": "The selected conversational request journey does not assess CI impact analysis.",
+          "sources": [
+            "R17"
+          ]
+        }
+      },
+      "otherRequirements": "Additional technical and operational requirements such as incident history, AI entitlements, assignment routing, access policy and controlled testing are outside this three foundation assessment."
     }
   ],
   "responseRubric": {
