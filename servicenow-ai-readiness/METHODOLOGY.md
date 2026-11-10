@@ -1,6 +1,6 @@
 # ServiceNow AI Readiness Assessment Suite
 
-## Research methodology, version 0.6.3
+## Research methodology, version 0.6.4
 
 Published working draft: 10 November 2026. Author: Enamul Haque. Independent research preview.
 
@@ -24,9 +24,15 @@ The seven deferred criteria are an independent research classification based on 
 
 The assessment considers whether selected CMDB, Knowledge Management and Service Catalogue foundations are suitable for specific ServiceNow AI activities. A result does not certify a ServiceNow instance, an AI agent, or autonomous deployment.
 
+## Privacy, persistence and report export
+
+The application processes questionnaire answers in the current browser page. It does not transmit or automatically save assessment answers to a server, or persist them in browser local storage or session storage. The working answers exist in page memory. Refreshing or closing the page destroys those answers. Starting a new assessment clears the previous answers and resets the assessment setup. Returning to Assessment Overview only changes the displayed section and preserves answers until the page is reloaded or a new assessment begins.
+
+Visitors are warned about temporary answers on the Assessment Overview, Configure Your Assessment and Assessment Results screens. Export JSON report downloads a separate JSON file to the user's own device. Print report uses the user's browser print operation, which may create a printout or PDF if chosen by the user. These operations intentionally create retained copies under the visitor's control. Users should not include confidential records, credentials or personal information.
+
 ## User journey and question explanations
 
-The visitor enters through the Introduction screen in `index.html`. The future authoritative WordPress project page will provide the public research context and link to the assessment application. The browser application then presents Assessment Setup, the relevant foundation questions and the results.
+The visitor enters through Assessment Overview in `index.html`. The future authoritative WordPress project page will provide the public research context and link to the assessment application. The browser application then presents Configure Your Assessment, the relevant foundation questions and Assessment Results. The results screen presents separate controls to start a new assessment or return to Assessment Overview.
 
 Each question presents a question mark beside the wording. Hover with a mouse, focus with a keyboard or tap on a touch device to read why the criterion is relevant, what the response establishes for the selected capability, suggested evidence and supporting research links. These explanations are versioned alongside the criteria in `criteria.json`.
 
