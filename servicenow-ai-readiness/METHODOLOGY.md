@@ -1,6 +1,6 @@
 # ServiceNow AI Readiness Assessment Suite
 
-## Research methodology, version 0.6.5
+## Research methodology, version 0.6.6
 
 Published working draft: 10 November 2026. Author: Enamul Haque. Independent research preview.
 
@@ -33,6 +33,12 @@ The evidence status field initially displays Select evidence status and has no p
 Observations are optional for Yes, Partially, No and Unknown answers. A written justification of at least 12 characters is mandatory if Not applicable is selected, because that response excludes the criterion from the applicable score denominator. Critical conditions cannot be marked Not applicable.
 
 When required fields are missing, the application presents an accessible validation summary with links to the affected question IDs and inline messages for the missing answer, evidence status or justification. The next stage remains unavailable until the missing responses are completed. Skipping to a later stage through the navigation also directs the user to the first incomplete questionnaire with the same guidance. An assessor can explicitly select Unknown and Not supplied and proceed without falsely claiming evidence has been reviewed.
+
+## Assessment navigation controls
+
+At first entry, only Assessment Overview and Configure Your Assessment are available in the navigation. The capability specific foundation checks remain disabled until the assessor chooses the intended capability, assessment stage and operational scope, then selects Continue to questions. After configuration, the first relevant foundation opens. Later foundation sections and Assessment Results become accessible when the required answers and evidence selections in preceding sections are complete. Disabled navigation options cannot bypass these checks.
+
+If a user changes the AI capability, assessment stage or optional foundation scope, the assessment requires configuration confirmation again before the questionnaires unlock. A new assessment also resets the navigation. Returning to Assessment Overview preserves current answers during that page session and does not reopen a locked section.
 
 ## Privacy, persistence and report export
 
