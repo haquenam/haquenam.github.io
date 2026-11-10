@@ -14,7 +14,7 @@ Configured experience validation additionally assesses criteria requiring observ
 
 The preparation stage defers C01, C06, K06, K07, S04, S06 and S07 when those criteria are in scope. These checks are listed in a separate report section rather than treated as failures or implied successes.
 
-A preparation percentage is the proportion of fulfilled answered preparation criteria only. It is not a percentage of complete ServiceNow AI capability readiness. Validation criteria cannot be assumed satisfied simply because the customer has suitable data or a documented implementation plan.
+A preparation percentage is the proportion of fulfilled answered preparation criteria only. The application also displays a nonnumeric assessment finding to signal unresolved critical conditions, missing evidence and outstanding configured capability validation. It is not a percentage of complete ServiceNow AI capability readiness. Validation criteria cannot be assumed satisfied simply because the customer has suitable data or a documented implementation plan.
 
 The complete list of technical and operational prerequisites outside CMDB, Knowledge Management and Service Catalogue must be checked separately, including entitlement, release, configuration, security, approvals, integration, supervision, evaluation and financial controls. Results do not authorise live autonomous operation.
 
