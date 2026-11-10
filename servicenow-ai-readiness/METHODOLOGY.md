@@ -1,8 +1,24 @@
 # ServiceNow AI Readiness Assessment Suite
 
-## Research methodology, version 0.5.1
+## Research methodology, version 0.6
 
 Published working draft: 10 November 2026. Author: Enamul Haque. Independent research preview.
+
+## Distinguishing preparation from configured capability validation
+
+Research Preview 0.6 provides two explicitly distinct assessment stages.
+
+Preparation for adoption evaluates only criteria that can reasonably be established by reviewing existing foundation data, content, policies and service design before enabling the selected AI capability.
+
+Configured experience validation additionally assesses criteria requiring observation of actual AI retrieval, access, categorisation, conversational input, request submission or exception handling.
+
+The preparation stage defers C01, C06, K06, K07, S04, S06 and S07 when those criteria are in scope. These checks are listed in a separate report section rather than treated as failures or implied successes.
+
+A preparation percentage is the proportion of fulfilled answered preparation criteria only. It is not a percentage of complete ServiceNow AI capability readiness. Validation criteria cannot be assumed satisfied simply because the customer has suitable data or a documented implementation plan.
+
+The complete list of technical and operational prerequisites outside CMDB, Knowledge Management and Service Catalogue must be checked separately, including entitlement, release, configuration, security, approvals, integration, supervision, evaluation and financial controls. Results do not authorise live autonomous operation.
+
+The seven deferred criteria are an independent research classification based on whether their present wording requires observable operation. Future criterion level rubrics may split an underlying preparation requirement from its corresponding runtime test.
 
 ## Purpose
 
@@ -18,7 +34,7 @@ The introductory page is a feature of the application, not an additional WordPre
 
 ## Capability selection
 
-The user selects a named ServiceNow AI activity and its intended operational scope. Core criteria always apply. Optional workflow conditions are selected explicitly and then add relevant foundation criteria. Unrelated criteria do not enter the calculation.
+The user selects a named ServiceNow AI activity, whether they are preparing or validating a configured experience, and its intended operational scope. Core criteria always apply. Optional workflow conditions are selected explicitly and then add relevant foundation criteria. Unrelated criteria do not enter the calculation.
 
 ### L1 IT Service Desk AI Specialist
 
@@ -74,7 +90,7 @@ Core: S01, S02, S03, S04, S05, S06, S07. Critical: S05, S06, K07.
 
 Optional: Also include knowledge answers during the request journey: K01, K04, K05, K06, K07.
 
-## Interpretation safeguards added in version 0.5.1
+## Interpretation safeguards added in version 0.6
 
 Every displayed numerical fulfilment result must state how many applicable criteria were included in its calculation. Unknown and unanswered criteria are disclosed separately. A 100 percent result calculated from one Yes answer is not a 100 percent assessment of the selected AI capability.
 
@@ -88,7 +104,7 @@ These changes improve reporting transparency but do not resolve the separate des
 
 Yes = 1, Partially = 0.5, No = 0. Unknown is not given a numeric score. A Not applicable response needs a written justification of at least 12 characters and cannot be used for critical criteria. All applicable criteria have equal weight because a calibrated weighting study is not available.
 
-The indicative foundation index is the sum of numeric answers divided by the number of numeric answers, multiplied by 100. If no numeric answers exist, no index is reported. Unknown and unanswered criteria are included in the completeness denominator, not the numerical denominator. This index is not a predicted probability of success or authorisation to adopt AI.
+The indicative foundation index is the sum of numeric answers within the selected assessment stage divided by the number of numeric answers in that stage, multiplied by 100. If no numeric answers exist, no index is reported. Unknown and unanswered criteria are included in the completeness denominator, not the numerical denominator. This index is not a predicted probability of success or authorisation to adopt AI.
 
 Completeness = answered applicable criteria divided by all applicable criteria, multiplied by 100. Unknown counts as answered for completeness when explicitly selected. Evidence coverage = applicable criteria marked document reviewed or scenario tested divided by applicable criteria, multiplied by 100. All evidence statuses are claims entered by the assessor. The browser does not inspect ServiceNow or confirm evidence authenticity.
 
