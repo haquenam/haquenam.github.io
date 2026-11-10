@@ -1,6 +1,6 @@
 {
   "name": "ServiceNow AI Readiness Assessment Suite",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "published": "2026-11-10",
   "author": "Enamul Haque",
   "disclaimer": "Independent research preview. Foundation suitability is not ServiceNow certification or authorisation to deploy AI. Results are based on user supplied answers, applicability and evidence claims. Verify release, licence, configuration, security and real outcomes separately.",
@@ -80,85 +80,100 @@
     {
       "id": "C01",
       "dimension": "CMDB",
-      "text": "Can the selected AI workflow identify the correct configuration item without confusing duplicate, obsolete or incorrectly classified records?",
-      "why": "Incorrect configuration identity can lead to an unsuitable service classification or impact result.",
-      "evidence": "Sample configuration item matches, identification checks and duplicate review.",
+      "text": "For the selected AI scenarios, is the correct affected configuration item identifiable in the CMDB?",
+      "why": "The impact workflow needs the affected CI identifier to determine where dependency tracing begins. Wrong or ambiguous CI records can produce an incorrect analysis.",
+      "evidence": "Sample incident or change records with the affected CI, CI identifiers and a check for duplicate or obsolete entries.",
       "refs": [
-        "R3",
+        "R5",
+        "R6",
         "R12"
       ],
-      "improve": "Check identification rules and correct ambiguous or duplicated records.",
-      "learn": "Whether the intended AI activity can reliably recognise the correct configuration item, rather than use a duplicate or outdated record as operational context.",
-      "requiresValidation": true
+      "improve": "Correct the CI reference on selected records and resolve duplicate or obsolete CI entries.",
+      "learn": "Whether an assessor can identify the intended configuration item reliably before AI analysis is enabled. A change or incident record can point to the CI, or the CI can be supplied directly.",
+      "requiresValidation": false
     },
     {
       "id": "C02",
       "dimension": "CMDB",
-      "text": "Are the configuration items relevant to this workflow linked to the correct services and service offerings?",
-      "why": "AI categorisation and service context depend on usable service associations.",
-      "evidence": "Sample incident mappings and relevant CSDM relationships.",
+      "text": "For AI incident categorisation, are the affected configuration items associated with the correct services and service offerings?",
+      "why": "Some incident categorisation experiences use service associations to identify which service or offering is affected. This criterion is not a universal requirement for CMDB impact analysis.",
+      "evidence": "Samples of affected CIs and mapped service and service offering fields for the selected incident types.",
       "refs": [
         "R3",
         "R13"
       ],
-      "improve": "Review and correct the mappings for the services in your pilot.",
-      "learn": "Whether service and service offering context associated with the relevant configuration items can be trusted for routing, classification or investigation.",
+      "improve": "Correct the service associations used for incident categorisation.",
+      "learn": "Whether service associations support the selected incident categorisation scenarios. It does not establish the quality of the dependency graph used by the impact analysis agent.",
       "requiresValidation": false
     },
     {
       "id": "C03",
       "dimension": "CMDB",
-      "text": "For AI impact analysis, do the relevant configuration items have valid and correctly directed dependency paths to impacted services?",
-      "why": "Topology based impact analysis needs trustworthy dependency direction and coverage.",
-      "evidence": "Dependency paths compared with known service impacts.",
+      "text": "Does the CMDB contain accurate dependency relationships showing which other CIs and services depend on each affected CI?",
+      "why": "The documented impact workflow traces upstream dependencies using CMDB relationships in cmdb_rel_ci. Missing or incorrectly directed relationships can hide impacted components and services.",
+      "evidence": "Review direct relationship records in cmdb_rel_ci. Trace sample dependency paths from the affected CI and compare them with known impacts.",
       "refs": [
         "R5",
         "R6"
       ],
-      "improve": "Remediate the relationships used by your intended impact scenarios.",
-      "learn": "Whether the dependency paths needed by AI assisted impact analysis are available and reflect known service effects.",
+      "improve": "Correct missing, inaccurate or reversed dependency relationships relevant to the selected scenarios.",
+      "learn": "Whether AI can follow reliable dependency paths from the affected CI to components or services potentially impacted by the selected change or incident.",
       "requiresValidation": false
     },
     {
       "id": "C04",
       "dimension": "CMDB",
-      "text": "Are the configuration attributes and relationships consumed by AI sufficiently accurate, current and traceable to maintained sources?",
-      "why": "Stale or conflicting source data weakens AI context and conclusions.",
-      "evidence": "Source timestamps, reconciliation review and selected record checks.",
+      "text": "Are the CI records and dependency relationships needed for the selected impact scenarios accurate and sufficiently current?",
+      "why": "AI reasons over the CMDB context it receives. Old or inaccurate CI data and relationships weaken the impact assessment.",
+      "evidence": "Sample record checks against maintained sources, last update information and confirmation of relevant dependency accuracy.",
       "refs": [
         "R12"
       ],
-      "improve": "Correct stale records and establish appropriate source refresh controls.",
-      "learn": "Whether the configuration facts supplied to AI are current enough, accurate enough and traceable to maintained sources.",
+      "improve": "Update stale CI information and correct inaccurate dependency records.",
+      "learn": "Whether the selected dependency data accurately represents the environment being assessed.",
       "requiresValidation": false
     },
     {
       "id": "C05",
       "dimension": "CMDB",
-      "text": "Is someone accountable for correcting configuration or service relationship defects discovered during AI evaluation?",
-      "why": "The reliability of AI context depends on a repeatable way of fixing defects.",
-      "evidence": "Named owner, improvement records and examples of resolved defects.",
+      "text": "Is there an accountable owner and a correction process for defects in the relevant CI and dependency data?",
+      "why": "This is an independent governance recommendation. ServiceNow does not list the existence of a named correction owner as an invocation prerequisite, but persistent defects weaken repeated AI assessments.",
+      "evidence": "Named data owners, sample data quality remediation records and a repeatable correction process.",
       "refs": [
         "R12",
         "R13"
       ],
-      "improve": "Assign a data owner and introduce a tracked defect correction process.",
-      "learn": "Whether discovered configuration defects can be corrected through accountable ownership before they recur in AI outputs.",
+      "improve": "Identify accountable data owners and establish a defect correction procedure.",
+      "learn": "Whether discovered CMDB defects have a route to remediation, rather than continuing to affect future AI analyses.",
       "requiresValidation": false
     },
     {
       "id": "C06",
       "dimension": "CMDB",
-      "text": "Can the intended AI identity access the required configuration information while restricted records remain protected?",
-      "why": "A workflow needs authorised access to relevant context without inappropriate disclosure.",
-      "evidence": "Positive and negative access tests using the intended identities.",
+      "text": "In a configured environment, can an authorised user invoke impact analysis and read the required CMDB and incident or change information?",
+      "why": "The documented workflow requires appropriate access, including the itil role for reading relevant records and invoking impact analysis. Access needs to be tested after configuration.",
+      "evidence": "Positive and negative access tests with appropriate user roles, the relevant incident or change records and impact analysis invocation.",
       "refs": [
-        "R6",
-        "R3"
+        "R5",
+        "R6"
       ],
-      "improve": "Review role access and test permitted and denied retrieval paths.",
-      "learn": "Whether AI can obtain the required configuration context while protected records remain unavailable to unauthorised identities.",
+      "improve": "Confirm the required roles and permissions, then retest the configured impact workflow.",
+      "learn": "Whether the chosen user and configured experience can carry out the documented operation using authorised permissions.",
       "requiresValidation": true
+    },
+    {
+      "id": "C07",
+      "dimension": "CMDB",
+      "text": "For each selected impact scenario, is there a clear description of the proposed change or incident for AI to assess?",
+      "why": "The documented impact workflow uses a change or incident description alongside the affected CI. Vague descriptions reduce the quality of AI reasoning about likely impact.",
+      "learn": "Whether enough information about the planned change or incident is available for the AI to reason about the scope and possible consequences.",
+      "evidence": "Representative incident or change descriptions, including the action, affected CI, purpose and operational context. A direct invocation can supply a CI identifier and description.",
+      "improve": "Improve change or incident descriptions so the proposed action, affected CI and operational context are clear.",
+      "refs": [
+        "R5",
+        "R6"
+      ],
+      "requiresValidation": false
     },
     {
       "id": "K01",
@@ -507,17 +522,18 @@
     {
       "id": "impact",
       "name": "Now Assist CMDB impact analysis",
-      "summary": "Understand impact through relevant configuration items and service dependency paths.",
+      "summary": "Assess whether the correct affected CI, change or incident context and CMDB dependency paths can support an AI impact assessment.",
       "core": [
         "C01",
-        "C02",
         "C03",
         "C04",
         "C05",
+        "C07",
         "C06"
       ],
       "optional": [],
       "gates": [
+        "C01",
         "C03",
         "C06"
       ],
