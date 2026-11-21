@@ -6,6 +6,9 @@ Live (public-safe) game: https://haquenam.github.io/rihans-market-rush/
 
 Open the link on a desktop or mobile browser. No installation, sign-in, account or game server. The site has no analytics or backend in this game.
 
+## Version 1.1: player-controlled shifts and sound
+Choose **Normal · Get Ready** or **Expert · Get Ready** in the opening window. This only sets difficulty; it does not start the timer. You may explore, build and restock before pressing **START SHIFT**. Customers browse automatically but cannot be checked out automatically: Rihan must stand next to checkout and press **E** to scan each customer. Original synthesised background music and game effects switch on when START SHIFT is pressed; the Sound on/off button controls playback (subject to browser audio permissions).
+
 ## Game modes and goals
 - **PLAY / EXPLORE:** press Start Shift. Control Rihan with WASD or arrows. Move beside a product shelf and press **E** to collect items in his shopping quest. Go to Checkout and press E to submit the completed quest. Press E near a waiting shopper to fast-scan and earn tips.
 - **BUILD THE STORE:** choose a department on the left, click an empty square to build it. Right-click a shelf to sell it for half its original cost. Aisles must remain accessible.
@@ -23,7 +26,7 @@ An optional **private family package** can contain assets/rihan-avatar.png for a
 ## Technical
 Vanilla HTML, CSS, JavaScript and Canvas 2D. No third-party libraries, remote scripts or trackers. Progress and custom avatar use browser localStorage. Hosting is static, through GitHub Pages.
 
-The game is a modest independent browser title, not a Roblox/PlayStation-scale 3D game. Its five days last around 7–8 minutes of shift time, plus additional exploration and building.
+The game is a modest independent browser title, not a Roblox/PlayStation-scale 3D game. The five shifts have 160 to 230 seconds each, plus additional exploration and building. The **private family launcher** is a separate local ZIP with Rihan's photo included automatically; it fetches public game code over the internet without uploading that photograph.
 
 ## Attribution and status
 Made with care for Rihan by his uncle **Enamul Haque**.
