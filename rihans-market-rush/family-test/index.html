@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="referrer" content="no-referrer"/><meta name="robots" content="noindex,nofollow,noarchive"/><title>Rihan's Private Market Rush | Family Testing</title>
+<style>
+:root{font-family:system-ui,Segoe UI,Arial,sans-serif;color:#0b2453;background:#071732}*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 0%,#123e77 0%,#081b3c 56%,#06132b 100%);color:#fff;display:flex;flex-direction:column}
+header{padding:18px clamp(15px,3vw,44px);display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:5px solid #ffca28}header strong{font-size:clamp(19px,2.5vw,30px);letter-spacing:-.06em}header strong span{color:#ffd145}header small{color:#b0c8e9;font-size:11px;font-weight:750}
+main{flex:1;display:grid;place-items:center;padding:24px}.gate{width:min(490px,100%);background:#fff;color:#19345e;padding:clamp(22px,4vw,34px);border-radius:20px;text-align:center;box-shadow:0 16px 70px #0006;border:4px solid #ffca28}
+.hero{font-size:49px}.tag{letter-spacing:.13em;font-size:10px;font-weight:900;color:#1c71b6}.gate h1{font-size:clamp(22px,5vw,32px);letter-spacing:-.05em;margin:8px 0}.gate p{font-size:14px;line-height:1.6;color:#516584}.gate label{display:block;font-weight:850;text-align:left;font-size:11px;margin:18px 0 7px}.input{display:flex;gap:8px}
+.input input{width:100%;padding:13px;border:2px solid #c8d8ed;border-radius:10px;font-size:16px;letter-spacing:.03em}.input button{background:#eff5ff;color:#143e74;border:1px solid #c8d8ed;border-radius:10px;padding:8px 12px}
+button{cursor:pointer}.unlock{width:100%;background:#ffca28;color:#091a3d;font-weight:950;font-size:14px;border:0;border-radius:10px;margin-top:14px;padding:14px}.unlock:disabled{opacity:.6;cursor:wait}.error{color:#b72d35!important;font-size:12px!important;min-height:24px}.hint{font-size:11px!important;margin-top:7px!important}
+#gameWrap[hidden],#gateWrap[hidden]{display:none}#gameWrap{width:100%;flex:1;display:flex;flex-direction:column}#gameWrap iframe{width:100%;border:0;flex:1;min-height:700px;background:#fff}.gamebar{background:#fff9e7;color:#20385e;padding:9px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;font-weight:800}.gamebar button{background:#122c59;color:#fff;border:0;border-radius:7px;padding:8px 14px}footer{color:#b2c4e2;font-size:11px;text-align:center;padding:17px}
+</style></head>
+<body><header><strong>RIHAN'S <span>MARKET RUSH!</span></strong><small>PRIVATE FAMILY TEST · ENCRYPTED AVATAR</small></header>
+<main id="gateWrap"><section class="gate"><div class="hero">🎮</div><div class="tag">MADE FOR RI​​HAN</div><h1>Your supermarket is waiting.</h1><p>Rihan's private family test has his own photo in the game. Enter the family access code to unlock it.</p><form id="unlockForm"><label for="pass">FAMILY ACCESS CODE</label><div class="input"><input id="pass" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" required placeholder="Enter code supplied by your uncle"/><button type="button" id="reveal" aria-label="Show or hide access code">Show</button></div><button class="unlock" id="unlockBtn" type="submit">▶ UNLOCK AND PLAY</button><p class="error" id="error" role="alert"></p></form><p class="hint">Your photograph is encrypted on GitHub. Decryption takes place only inside this browser. Please keep the access code within the family.</p></section></main>
+<div id="gameWrap" hidden><div class="gamebar"><span>🔒 Rihan's personalised family test is unlocked on this device.</span><button id="lock" type="button">Lock &amp; clear photo</button></div><iframe id="game" title="Rihan's Market Rush private family game" allow="autoplay"></iframe></div>
+<footer>Made with care for Rihan by his uncle Enamul Haque. Independent non-commercial supermarket-themed game, not affiliated with Aldi.</footer>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id), STORE_KEY='rihan_market_rush_avatar_v1';
+const bytes=b64=>Uint8Array.from(atob(b64),ch=>ch.charCodeAt(0));
+$('reveal').onclick=()=>{$('pass').type=$('pass').type==='password'?'text':'password';$('reveal').textContent=$('pass').type==='password'?'Show':'Hide'};
+$('unlockForm').addEventListener('submit',async function(e){
+e.preventDefault();const pass=$('pass').value.trim().toUpperCase();if(!pass)return;const button=$('unlockBtn');button.disabled=true;button.textContent='UNLOCKING…';$('error').textContent='';
+try{
+if(!crypto.subtle)throw new Error('Use an up-to-date browser over HTTPS.');
+const res=await fetch('photo.enc.json',{cache:'no-store'});if(!res.ok)throw new Error('The private game asset is not yet available.');const packet=await res.json();
+const keyMaterial=await crypto.subtle.importKey('raw',new TextEncoder().encode(pass),'PBKDF2',false,['deriveKey']);
+const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:bytes(packet.salt),iterations:packet.iterations,hash:'SHA-256'},keyMaterial,{name:'AES-GCM',length:256},false,['decrypt']);
+const plaintext=await crypto.subtle.decrypt({name:'AES-GCM',iv:bytes(packet.nonce),additionalData:bytes(packet.aad)},key,bytes(packet.ciphertext));
+const photo=new Blob([plaintext],{type:'image/jpeg'});const reader=new FileReader();
+reader.onload=()=>{try{localStorage.setItem(STORE_KEY,reader.result)}catch(e){throw new Error('Browser storage unavailable.')} $('gateWrap').hidden=true;$('gameWrap').hidden=false;$('pass').value='';$('game').src='../?family=1&v=1.1.1';};
+reader.onerror=()=>{$('error').textContent='Could not decode the photo. Try again.'};reader.readAsDataURL(photo);
+}catch(err){$('error').textContent=(err.name==='OperationError'||err.name==='DataError')?'Incorrect access code. Check the code and try again.':err.message;}
+finally{button.disabled=false;button.textContent='▶ UNLOCK AND PLAY';}
+});
+$('lock').onclick=()=>{$('game').src='about:blank';localStorage.removeItem(STORE_KEY);$('gameWrap').hidden=true;$('gateWrap').hidden=false;$('pass').focus();};
+})();
+</script>
+</body></html>
