@@ -95,7 +95,7 @@ $('touchE').onclick=interact;$('touchSprint').addEventListener('pointerdown',e=>
 $('startBtn').onclick=()=>startShift();$('pauseBtn').onclick=togglePause;$('howBtn').onclick=showHelp;$('newGameBtn').onclick=resetPrompt;$('collectQuest').onclick=()=>newQuest(true);$('photoInput').addEventListener('change',e=>uploadPhoto(e.target.files[0]));$('removePhoto').onclick=()=>{localStorage.removeItem(PHOTO);rt.avatar=null;$('portrait').innerHTML='<span>R</span>';loadAvatar(DEFAULT_AVATAR,false);notify('Local photograph removed. Rihan’s illustrated avatar restored.')} ;
 $('soundBtn').onclick=()=>{rt.audio=!rt.audio;rt.audioChosen=true;$('soundBtn').textContent=rt.audio?'♫ Sound on':'♫ Sound off';$('soundBtn').setAttribute('aria-pressed',String(rt.audio));beep(600,.1)};
 for(const b of document.querySelectorAll('[data-mode]'))b.onclick=()=>setMode(b.dataset.mode);
-const storedPhoto=localStorage.getItem(PHOTO);if(storedPhoto)loadAvatar(storedPhoto,false);else loadAvatar(DEFAULT_AVATAR,false)
+const storedPhoto=window.__RIHAN_PRIVATE_AVATAR__||localStorage.getItem(PHOTO);if(storedPhoto)loadAvatar(storedPhoto,false);else loadAvatar(DEFAULT_AVATAR,false)
 let old=performance.now();function loop(now){let dt=Math.min(.07,(now-old)/1000);old=now;rt.anim+=dt;if(rt.toastClock>0){rt.toastClock-=dt;if(rt.toastClock<=0)$('alert').classList.remove('show')}if(!rt.modalOpen){drive(dt);if(s.shift&&!s.paused&&rt.mode==='run')updateAI(dt)}musicTick(dt);rt.timerSave+=dt;if(rt.timerSave>.9){ui();rt.timerSave=0;save()}draw();requestAnimationFrame(loop)}
 setMode('run');log('The supermarket is ready. Five challenging shifts ahead.');ui();welcome();requestAnimationFrame(loop);
 })();
