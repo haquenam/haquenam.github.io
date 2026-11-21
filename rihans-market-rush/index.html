@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#091a3e">
+<meta name="description" content="Rihan's Market Rush: a browser-based supermarket tycoon arcade game.">
+<title>Rihan's Market Rush | The Supermarket Adventure</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="mast-inner"><div class="identity"><div class="emblem">R</div><div><div class="overline">RIHAN'S SUPERMARKET ADVENTURE</div><strong>MARKET <span>RUSH!</span></strong></div></div><div class="top-actions"><span class="edition">FAMILY FAN GAME · V1.0</span><button id="howBtn" class="ghost" type="button">ⓘ How to play</button><button id="soundBtn" class="ghost" type="button" aria-pressed="false">♫ Sound off</button></div></div>
+</header>
+<div class="ticker"><span>WELCOME TO YOUR OWN SUPERMARKET</span><span>·</span><span>SERVE CUSTOMERS</span><span>·</span><span>BUILD YOUR STORE</span><span>·</span><span>BEAT THE SATURDAY RUSH</span></div>
+<main class="dashboard">
+  <section class="hud" aria-label="Game statistics">
+    <div class="metric"><small>STORE CASH</small><b id="cash">£0</b></div>
+    <div class="metric"><small>DAY</small><b id="day">1 / 5</b></div>
+    <div class="metric"><small>SHIFT CLOCK</small><b id="clock">01:20</b></div>
+    <div class="metric"><small>CUSTOMERS SERVED</small><b id="served">0 / 6</b></div>
+    <div class="metric"><small>REPUTATION</small><b id="rep">100%</b></div>
+    <div class="metric accent"><small>STAR SCORE</small><b id="stars">★ 0</b></div>
+  </section>
+  <div class="columns">
+    <aside class="rail left">
+      <div class="profile"><div class="portrait" id="portrait"><span>R</span></div><div><small>SHOP OWNER & HERO</small><strong>Rihan</strong><span id="rank">Rookie Retailer</span></div></div>
+      <div class="panel">
+        <div class="panel-heading">GAME MODES</div>
+        <button id="modeRun" class="mode active" data-mode="run"><span class="mode-icon">▶</span><span><b>PLAY / EXPLORE</b><small>Serve, shop, beat the clock</small></span></button>
+        <button id="modeBuild" class="mode" data-mode="build"><span class="mode-icon">▦</span><span><b>BUILD THE STORE</b><small>Design smarter aisles</small></span></button>
+        <button id="modeStock" class="mode" data-mode="stock"><span class="mode-icon">▣</span><span><b>RESTOCK SHELVES</b><small>Keep customers happy</small></span></button>
+        <div id="toolbox" class="toolbox"></div>
+      </div>
+      <div class="panel instructions">
+        <div class="panel-heading">CONTROLS</div>
+        <div class="keyline"><span>Move Rihan</span><b>W A S D / ↑ ↓ ← →</b></div>
+        <div class="keyline"><span>Interact / scan</span><b>E</b></div>
+        <div class="keyline"><span>Sprint</span><b>SHIFT</b></div>
+        <div class="keyline"><span>Pause shift</span><b>P</b></div>
+        <p id="contextHelp">Walk to shelves and press E to shop. Help customers at checkout.</p>
+      </div>
+      <div class="panel personal"><div class="panel-heading">MAKE HIM THE HERO</div><p>Load Rihan's real photo from this device. It stays in this browser, never uploaded to GitHub.</p><label class="photo-upload" for="photoInput">↑ Add Rihan's photo</label><input id="photoInput" type="file" accept="image/*" hidden><button id="removePhoto" class="textbtn" type="button">Remove saved photo</button></div>
+    </aside>
+    <section class="center">
+      <div class="game-toolbar"><div><div id="modeHeading" class="world-title">THE STORE IS YOURS</div><div id="modeSubtitle" class="world-subtitle">Build it. Run it. Make it legendary.</div></div><div class="toolbar-buttons"><button id="pauseBtn" class="outline" type="button">Ⅱ Pause</button><button id="startBtn" class="primary" type="button">▶ START SHIFT</button></div></div>
+      <div class="world-frame"><canvas id="world" width="800" height="550" tabindex="0" aria-label="Interactive top-down supermarket game"></canvas><div id="overlayHint" class="world-hint">WASD to move · E to interact · Click to navigate</div><div id="alert" class="toast" aria-live="polite">Welcome, Rihan!</div></div>
+      <div class="touch-controls"><div class="dpad"><button data-move="up" aria-label="Move up">▲</button><div><button data-move="left" aria-label="Move left">◀</button><button data-move="down" aria-label="Move down">▼</button><button data-move="right" aria-label="Move right">▶</button></div></div><div class="mobile-other"><button id="touchE">E · INTERACT</button><button id="touchSprint">⚡ SPRINT</button></div></div>
+      <div class="bottombar"><span id="worldStatus">Shift ready. Start whenever you are.</span><div><button id="newGameBtn" class="danger-outline">↺ New game / Reset</button></div></div>
+    </section>
+    <aside class="rail right">
+      <div class="panel mission"><div class="panel-heading">TODAY'S MISSION <span id="missionFlag">DAY 1</span></div><h2 id="missionTitle">OPENING DAY</h2><p id="missionDesc">Serve your first customers and prove you can run the shop.</p><div class="progress-top"><span>Customers served</span><strong id="goalText">0 / 6</strong></div><div class="track"><div id="goalBar"></div></div><div class="progress-top"><span>Customer happiness</span><strong id="happyText">100%</strong></div><div class="track gold"><div id="happyBar"></div></div><div class="reward">★ Clear the shift to earn bonus stars and unlock the next day.</div></div>
+      <div class="panel"><div class="panel-heading">RIHAN'S SHOPPING QUEST</div><p class="tiny">Find these three goods and take them to checkout. It's your bonus mission.</p><div id="questItems" class="quest-list"></div><button id="collectQuest" class="smallbutton">↻ New shopping list (£25)</button></div>
+      <div class="panel"><div class="panel-heading">STORE UPGRADES</div><div id="upgrades"></div></div>
+      <div class="panel"><div class="panel-heading">LIVE STORE FEED</div><div id="feed" class="feed"></div></div>
+    </aside>
+  </div>
+</main>
+<footer><span>Made with care for Rihan by his uncle Enamul Haque.</span><span>Independent, non-commercial Aldi-themed coding project. Not affiliated with, sponsored by or endorsed by Aldi or its staff.</span></footer>
+<div class="scrim" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden><div class="modal-card"><div id="modalIcon" class="modal-icon">🏪</div><div class="modal-eyebrow">MARKET RUSH</div><h2 id="modalTitle">Your supermarket starts here.</h2><p id="modalText"></p><div id="modalExtra"></div><div id="modalButtons" class="modal-buttons"></div></div></div>
+<script src="game.js"></script>
+</body>
+</html>
